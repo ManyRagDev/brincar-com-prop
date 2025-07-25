@@ -1,40 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Brincar Educando Design System - Cores suaves e acolhedoras */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Background principal - creme muito suave */
+    --background: 48 100% 99%;
+    --foreground: 222 84% 4.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Cards com fundo levemente creme */
+    --card: 48 50% 98%;
+    --card-foreground: 222 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 48 50% 98%;
+    --popover-foreground: 222 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Verde-água como cor primária */
+    --primary: 195 93% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 195 93% 88%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Laranja suave como secundária */
+    --secondary: 24 95% 70%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-soft: 24 95% 88%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Creme para elementos de destaque */
+    --accent: 48 100% 88%;
+    --accent-foreground: 45 60% 25%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted com tom creme */
+    --muted: 48 50% 95%;
+    --muted-foreground: 215 16% 47%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* Rosa bebê para destaques especiais */
+    --rose: 351 95% 85%;
+    --rose-foreground: 351 60% 30%;
+
+    /* Verde menta para elementos científicos */
+    --mint: 165 95% 85%;
+    --mint-foreground: 165 60% 30%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 48 50% 90%;
+    --input: 48 50% 92%;
+    --ring: 195 93% 68%;
 
     --radius: 0.5rem;
 
@@ -94,12 +110,47 @@ All colors MUST be HSL.
   }
 }
 
+/* Gradientes e sombras personalizadas */
+:root {
+  --gradient-hero: linear-gradient(135deg, hsl(var(--primary-soft)), hsl(var(--accent)));
+  --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+  --shadow-gentle: 0 4px 20px -5px hsl(var(--primary) / 0.15);
+  --shadow-warm: 0 8px 30px -8px hsl(var(--secondary) / 0.2);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Classes utilitárias para o projeto */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-gentle {
+    box-shadow: var(--shadow-gentle);
+  }
+
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
   }
 }
