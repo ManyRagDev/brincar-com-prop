@@ -36,10 +36,10 @@ const HeroSection = () => {
           {/* Descrição */}
           <div className="max-w-3xl mx-auto mb-8 space-y-4">
             <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-              Este é um espaço para pais, mães e cuidadores que querem entender mais sobre como o brincar pode estimular, ensinar e fortalecer vínculos.
+              <strong>Este é um espaço para pais, mães e cuidadores que querem entender mais sobre como o brincar pode estimular, ensinar e fortalecer vínculos.</strong>
             </p>
             <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-              Análises, resenhas e dicas com base no que <strong className="text-primary">realmente</strong> faz a diferença no desenvolvimento.
+              <strong>Análises, resenhas e dicas com base no que</strong> <strong className="bg-indigo-600 text-primary px-2 py-1 rounded-md">realmente</strong> <strong>faz a diferença no desenvolvimento.</strong>
             </p>
           </div>
 
