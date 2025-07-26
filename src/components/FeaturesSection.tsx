@@ -37,9 +37,9 @@ const FeaturesSection = () => {
     <section className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+          {/*<h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
             Por que confiar em nós?
-          </h2>
+          </h2>*/}
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Nosso compromisso é oferecer informação de qualidade para que você tome as melhores decisões para seu bebê
           </p>

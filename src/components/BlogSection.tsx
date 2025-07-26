@@ -32,7 +32,7 @@ const BlogSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Últimas resenhas e dicas
+            Conteúdo prático e baseado em evidências para ajudar você a fazer escolhas mais conscientes
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Conteúdo prático e baseado em evidências para ajudar você a fazer escolhas mais conscientes

@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Heart, BookOpen, Baby } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
+
+
 const HeroSection = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
@@ -39,14 +41,18 @@ const HeroSection = () => {
               <strong>Este é um espaço para pais, mães e cuidadores que querem entender mais sobre como o brincar pode estimular, ensinar e fortalecer vínculos.</strong>
             </p>
             <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-              <strong>Análises, resenhas e dicas com base no que</strong> <strong className="bg-indigo-600 text-primary px-2 py-1 rounded-md">realmente</strong> <strong>faz a diferença no desenvolvimento.</strong>
+              <strong>Análises, resenhas e dicas com base no que</strong> <strong className="text-indigo-700 px-1 py-0.5 rounded-md">realmente</strong> <strong>faz a diferença no desenvolvimento.</strong>
             </p>
           </div>
 
           {/* Frase de destaque */}
-          <p className="text-xl md:text-2xl font-semibold text-primary mb-10">
-            Escolhas conscientes. Brincar com propósito.
-          </p>
+          <div className="max-w-3xl mx-auto mb-8 space-y-4">
+            <p className="font-lilita text-2xl tracking-widest">
+              Brincar. Desenvolver. Amar.
+            </p>
+          </div>
+
+          
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

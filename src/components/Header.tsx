@@ -37,9 +37,9 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="hero" size="sm" className="hidden sm:flex">
+          {/*<Button variant="hero" size="sm" className="hidden sm:flex">
             Ver brinquedos
-          </Button>
+          </Button>*/}
           
           {/* Menu mobile */}
           <div className="md:hidden">
