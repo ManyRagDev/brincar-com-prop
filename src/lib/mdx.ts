@@ -10,6 +10,7 @@ export function getAllPosts() {
     return {
       ...(module.frontmatter || {}),
       slug,
+      default: module.default, // ✅ necessário para renderizar o conteúdo do post
     };
   });
 }

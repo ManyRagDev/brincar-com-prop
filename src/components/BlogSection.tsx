@@ -4,8 +4,21 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/mdx";
 import { useMemo } from "react";
 
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+};
+
 const BlogSection = () => {
-  const blogPosts = useMemo(() => getAllPosts(), []);
+  const blogPosts = useMemo(() => {
+    return getAllPosts()
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // mais recente primeiro
+      .slice(0, 3); // só os 3 primeiros
+  }, []);
   console.log(blogPosts); // 👈 adicione aqui
 
 
@@ -27,8 +40,8 @@ const BlogSection = () => {
                   alt={post.title}
                   className="w-full h-48 object-cover"
                 />
-                ) : (
-                  <div className="h-48 bg-gradient-card" />
+              ) : (
+                <div className="h-48 bg-gradient-card" />
               )}
 
               <div className="p-6">
@@ -38,7 +51,7 @@ const BlogSection = () => {
                   </span>
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
-                    {post.date}
+                    {formatDate(post.date)}
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
@@ -47,17 +60,23 @@ const BlogSection = () => {
                 </div>
 
                 <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-smooth">
-                  {post.title}
+                  <a href={`/blog/${post.slug}`} className="text-primary hover:underline flex items-center gap-1">
+                    {post.title}</a>
                 </h3>
 
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {post.excerpt}
                 </p>
 
-                <Button variant="ghost" className="group-hover:bg-primary-soft transition-smooth p-0">
+                {/*<Button variant="ghost" className="group-hover:bg-primary-soft transition-smooth p-0">
                   Ler mais
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
-                </Button>
+                </Button>*/}
+                <a href={`/blog/${post.slug}`} className="text-primary hover:underline flex items-center gap-1">
+                  Ler mais
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+
               </div>
             </Card>
           ))}
