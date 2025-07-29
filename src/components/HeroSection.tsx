@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Heart, BookOpen, Baby } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { Link } from "react-router-dom";
+
 
 
 
@@ -8,12 +10,12 @@ const HeroSection = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background com overlay suave */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-primary-soft/30" />
-      
+
       {/* Conteúdo principal */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
@@ -52,16 +54,19 @@ const HeroSection = () => {
             </p>
           </div>
 
-          
+
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl">
               Ver brinquedos recomendados
             </Button>
-            <Button variant="soft" size="xl">
-              Ler nossas resenhas
-            </Button>
+
+            <Link to="/blog">
+              <Button variant="soft" size="xl">
+                Ler nossas resenhas
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

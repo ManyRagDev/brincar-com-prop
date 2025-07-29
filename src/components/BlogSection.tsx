@@ -3,6 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/mdx";
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -72,10 +75,11 @@ const BlogSection = () => {
                   Ler mais
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
                 </Button>*/}
-                <a href={`/blog/${post.slug}`} className="text-primary hover:underline flex items-center gap-1">
+                <Link to={`/blog/${post.slug}`} state={{ from: location.pathname }} className="text-primary hover:underline flex items-center gap-1">
                   Ler mais
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
+
 
               </div>
             </Card>
@@ -83,9 +87,12 @@ const BlogSection = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" size="lg">
-            Ver todos os artigos
-          </Button>
+          <Link to="/blog">
+            <Button variant="outline" size="lg">
+              Ver todos os artigos
+            </Button>
+          </Link>
+
         </div>
       </div>
     </section>

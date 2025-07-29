@@ -22,10 +22,10 @@ const Header = () => {
           <a href="#sobre" className="text-foreground hover:text-primary transition-smooth">
             Top Recomendações
           </a>
-          <a href="#resenhas" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#guias" className="text-foreground hover:text-primary transition-smooth">
             Guias por Idade
           </a>
-          <a href="#contato" className="text-foreground hover:text-primary transition-smooth">
+          <a href="#resenhas" className="text-foreground hover:text-primary transition-smooth">
             Blog
           </a>
           <a href="#contato" className="text-foreground hover:text-primary transition-smooth">

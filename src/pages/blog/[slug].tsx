@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { getAllPosts } from "@/lib/mdx";
 import { MDXProvider } from "@mdx-js/react";
 import { Image } from "@/components/ui/image";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { ArrowLeft } from "lucide-react"; // ícone opcional
 
@@ -17,7 +17,9 @@ const components = {
 
 export default function BlogPostPage() {
     const { slug } = useParams<{ slug: string }>();
+    const location = useLocation();
     const navigate = useNavigate();
+    const from = location.state?.from || "/";
     const posts = getAllPosts();
     const post = posts.find((p) => p.slug === slug);
 
@@ -29,12 +31,13 @@ export default function BlogPostPage() {
 
     return (
         <article className="prose prose-lg dark:prose-invert mx-auto px-6 pt-8 pb-20 max-w-2xl">
-            <Link to="/">
-                <Button variant="outline" className="inline-flex items-center gap-2">
-                    <ArrowLeft className="h-4 w-4" />
-                    Voltar para o blog
-                </Button>
-            </Link>
+            <Button
+                onClick={() => navigate(from)}
+                className="mt-8 bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition"
+            >
+                <ArrowLeft className="inline-block mr-2" /> Voltar
+            </Button>
+
 
 
             <h1>{post.title}</h1>
