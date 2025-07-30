@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import BlogPostPage from "./pages/blog/[slug]";
-import BlogAll from "./pages/BlogAll"; // 👈 novo import
+import BlogAll from "./pages/BlogAll"; 
+import PostForm from "./pages/admin/PostForm";
+
 
 const queryClient = new QueryClient();
 
@@ -18,6 +20,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/admin/novo-post" element={<PostForm />} />
           <Route path="/blog" element={<BlogAll />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="*" element={<NotFound />} />
