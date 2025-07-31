@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import BlogPostPage from "./pages/blog/[slug]";
 import BlogAll from "./pages/BlogAll"; 
 import PostForm from "./pages/admin/PostForm";
+import ProdutosRecomendados from "./pages/ProdutosRecomendados";
+
 
 
 const queryClient = new QueryClient();
@@ -23,6 +25,7 @@ const App = () => (
           <Route path="/admin/novo-post" element={<PostForm />} />
           <Route path="/blog" element={<BlogAll />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/produtos" element={<ProdutosRecomendados />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

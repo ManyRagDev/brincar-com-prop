@@ -1,0 +1,189 @@
+[
+  {
+    "id": "montessori",
+    "nome": "Kit Montessori",
+    "slug": "montessori",
+    "descricao": "Brinquedo de montar com furadeira infantil e peças coloridas para estimular criatividade, coordenação e lógica.",
+    "categoria": "montessori",
+    "idade": "6 anos",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-YYYK.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/2acrBY5"
+  },
+  {
+    "id": "sensorial",
+    "nome": "Brinquedo Sensorial",
+    "slug": "sensorial",
+    "descricao": "Kit de estímulos Montessori para desenvolvimento motor e sensorial.",
+    "categoria": "brinquedos, sensorial",
+    "idade": "3 anos",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-LES9.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1WnP6rA"
+  },
+  {
+    "id": "encaixe",
+    "nome": "Brinquedo de Encaixe",
+    "slug": "encaixe",
+    "descricao": "Brinquedo de encaixe que desenvolve coordenação e raciocínio.",
+    "categoria": "brinquedos, educativos",
+    "idade": "1 ano",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-5SDW.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/2PJoiqz"
+  },
+  {
+    "id": "cubo-educativo",
+    "nome": "Cubo Educativo",
+    "slug": "cubo-educativo",
+    "descricao": "Kit de estímulos Montessori para desenvolvimento motor e sensorial.",
+    "categoria": "brinquedos, educativos",
+    "idade": "6 meses",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-AV2X.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/18aikBM"
+  },
+  {
+    "id": "tapete-dino",
+    "nome": "Tapete de Atividades",
+    "slug": "tapete-dino",
+    "descricao": "Brinquedo sensorial com texturas e atividades estimulantes.",
+    "categoria": "tapetes, primeira infância",
+    "idade": "todas",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-H4C4.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/22WJLAt"
+  },
+  {
+    "id": "mordedor",
+    "nome": "Mordedor de Silicone",
+    "slug": "mordedor",
+    "descricao": "A luva mordedor silicone massageador alivio gengiva bebê é perfeita para proporcionar alívio e conforto ao seu bebê durante o período de dentição.",
+    "categoria": "acessorios, sensorial",
+    "idade": "4 meses",
+    "genero": "menina",
+    "imagem": "./images/A14G98-6A46.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/2gRyy3B"
+  },
+  {
+    "id": "livro-pano",
+    "nome": "Livro de Pano",
+    "slug": "livro-pano",
+    "descricao": "Brinquedo sensorial com texturas e atividades estimulantes.",
+    "categoria": "livros, primeira infância",
+    "idade": "todas",
+    "genero": "menino",
+    "imagem": "./images/A14G98-NTWS.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1meJgin"
+  },
+  {
+    "id": "chocalho",
+    "nome": "Chocalho com Textura",
+    "slug": "chocalho",
+    "descricao": "O chocalho space ball é perfeito para entreter, desenvolver os sentidos do bebê e massagear a gengiva.",
+    "categoria": "sensorial, primeira infância",
+    "idade": "3 meses",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-5WAB.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/2rN6iFt"
+  },
+  {
+    "id": "prato-ventosa",
+    "nome": "Prato bambu com Ventosa",
+    "slug": "prato-ventosa",
+    "descricao": "Apresentamos o prato quadrado c ventosa bambu silicone azul da fisher-price, um produto de alta qualidade e design inovador.",
+    "categoria": "alimentacao, rotina",
+    "idade": "todas",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-6B7C.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1LUPaED"
+  },
+  {
+    "id": "babador",
+    "nome": "Babador Impermeável",
+    "slug": "babador",
+    "descricao": "Mantenha seu pequeno limpo e confortável durante as refeições com os nossos babadores impermeáveis para bebês.",
+    "categoria": "alimentacao, cuidados",
+    "idade": "6 meses",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-9TSN.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1St9yEs"
+  },
+  {
+    "id": "termometro",
+    "nome": "Termômetro Digital",
+    "slug": "termometro",
+    "descricao": "100% resistentes à água e com beep sonoro de aviso de medição.",
+    "categoria": "cuidados, eletronicos",
+    "idade": "todas",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-0Q7X.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/2AXNu1D"
+  },
+  {
+    "id": "tapete-tatame",
+    "nome": "Tapete Tatame Dobrável",
+    "slug": "tapete-tatame",
+    "descricao": "Cubo educativo com múltiplas atividades para bebês.",
+    "categoria": "tapetes, organizacao",
+    "idade": "todas",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-GBM3.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1bbNJFW"
+  },
+  {
+    "id": "organizador",
+    "nome": "Organizador de Brinquedos",
+    "slug": "organizador",
+    "descricao": "Kit de estímulos Montessori para desenvolvimento motor e sensorial.",
+    "categoria": "organizacao",
+    "idade": "todas",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-HV5X.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1DLuPW8"
+  },
+  {
+    "id": "mesa-cadeira",
+    "nome": "Mesa e Cadeira Infantil",
+    "slug": "mesa-cadeira",
+    "descricao": "Cubo educativo com múltiplas atividades para bebês.",
+    "categoria": "mobilia, organizacao",
+    "idade": "1 ano",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-4GX5.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/12AcvZY"
+  },
+  {
+    "id": "livro-emocoes",
+    "nome": "Livro das Emoções",
+    "slug": "livro-emocoes",
+    "descricao": "Kit com 4 livros coleção sentimentos e emoções edição pocket, james misse editora pé da letra: n/a, de james misse.",
+    "categoria": "livros, leitura",
+    "idade": "3 anos",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-3VT8.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/2NboBFu"
+  },
+  {
+    "id": "livro-interativo",
+    "nome": "Livro Interativo com Sons",
+    "slug": "livro-interativo",
+    "descricao": "Um livro sonoro adorável e resistente com dez botões de sons incríveis, repleto de imagens fantásticas de animais, juntamente com algumas informações interessantes sobre eles.",
+    "categoria": "livros, leitura",
+    "idade": "todas",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-97YL.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/1ynXjo5"
+  },
+  {
+    "id": "kit-bebe",
+    "nome": "Kit de Brinquedos para Bebê",
+    "slug": "kit-bebe",
+    "descricao": "Brinquedo de encaixe que desenvolve coordenação e raciocínio.",
+    "categoria": "presentes, primeira infância",
+    "idade": "3 anos",
+    "genero": "unissex",
+    "imagem": "./images/A14G98-P634.png",
+    "linkAfiliado": "https://mercadolivre.com/sec/31iMMTu"
+  }
+]

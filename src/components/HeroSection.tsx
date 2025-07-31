@@ -58,9 +58,12 @@ const HeroSection = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl">
-              Ver brinquedos recomendados
-            </Button>
+            <Link to="/produtos">
+              <Button variant="hero" size="xl">
+                Ver brinquedos recomendados
+              </Button>
+            </Link>
+
 
             <Link to="/blog">
               <Button variant="soft" size="xl">
