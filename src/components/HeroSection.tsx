@@ -60,7 +60,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/produtos">
               <Button variant="hero" size="xl">
-                Ver brinquedos recomendados
+                Ver Lista de Brinquedos Recomendados
               </Button>
             </Link>
 

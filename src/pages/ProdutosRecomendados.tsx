@@ -19,7 +19,6 @@ export default function ProdutosRecomendados() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [categoriaFiltro, setCategoriaFiltro] = useState("");
   const [idadeFiltro, setIdadeFiltro] = useState("");
-  const [generoFiltro, setGeneroFiltro] = useState("");
 
   useEffect(() => {
     setProdutos(produtosData);
@@ -28,7 +27,6 @@ export default function ProdutosRecomendados() {
   const produtosFiltrados = produtos.filter((produto) => {
     const categoriaOk = categoriaFiltro ? produto.categoria.includes(categoriaFiltro) : true;
 
-    // Ajuste: agrupar idades como "0 a 12 meses"
     const idadeNormalizada = produto.idade.toLowerCase();
     const idadeOk = idadeFiltro
       ? idadeFiltro === "0 a 12 meses"
@@ -36,14 +34,12 @@ export default function ProdutosRecomendados() {
         : idadeNormalizada === idadeFiltro.toLowerCase()
       : true;
 
-    const generoOk = generoFiltro ? produto.genero === generoFiltro : true;
-    return categoriaOk && idadeOk && generoOk;
+    return categoriaOk && idadeOk;
   });
 
   const limparFiltros = () => {
     setCategoriaFiltro("");
     setIdadeFiltro("");
-    setGeneroFiltro("");
   };
 
   return (
@@ -71,7 +67,7 @@ export default function ProdutosRecomendados() {
         </p>
 
         {/* Filtros com cabeçalhos para maior clareza */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
           <div>
             <label className="block text-sm font-semibold mb-2">Categoria</label>
             <select
@@ -102,20 +98,6 @@ export default function ProdutosRecomendados() {
               <option value="2 anos">2 anos</option>
               <option value="3 anos">3 anos</option>
               <option value="todas">Todas</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold mb-2">Gênero</label>
-            <select
-              value={generoFiltro}
-              onChange={(e) => setGeneroFiltro(e.target.value)}
-              className="p-3 rounded-md border border-gray-300 w-full"
-            >
-              <option value="">Todos os gêneros</option>
-              <option value="unissex">Unissex</option>
-              <option value="menino">Menino</option>
-              <option value="menina">Menina</option>
             </select>
           </div>
         </div>

@@ -1,54 +1,72 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logotipo.png";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const links = [
+    { name: "Início", href: "#inicio" },
+    { name: "Sobre nós", href: "#Sobre" },
+    { name: "Top Recomendações", href: "#recomendacoes" },
+    { name: "Guias por Idade", href: "#guias" },
+    { name: "Blog", href: "#blog" },
+    { name: "Contato", href: "#contato" },
+  ];
+
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src={logo} alt="Brincar Educando" className="h-40 w-40 rounded-lg" />
-          {/*<div>
-            <h1 className="text-xl font-semibold text-foreground">
-              Brincar Educando
-            </h1>
-            <p className="text-xs text-muted-foreground">Cuidar brincando</p>
-          </div>*/}
+          <img src={logo} alt="Brincar Educando" className="h-16 md:h-20 lg:h-40 w-auto max-h-[160px] rounded-md" />
         </div>
-        
+
+        {/* Menu Desktop */}
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#inicio" className="text-foreground hover:text-primary transition-smooth">
-            Início
-          </a>
-          <a href="#sobre" className="text-foreground hover:text-primary transition-smooth">
-            Top Recomendações
-          </a>
-          <a href="#guias" className="text-foreground hover:text-primary transition-smooth">
-            Guias por Idade
-          </a>
-          <a href="#resenhas" className="text-foreground hover:text-primary transition-smooth">
-            Blog
-          </a>
-          <a href="#contato" className="text-foreground hover:text-primary transition-smooth">
-            Sobre nós
-          </a>
-          <a href="#contato" className="text-foreground hover:text-primary transition-smooth">
-            Contato
-          </a>
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-foreground hover:text-primary transition"
+            >
+              {link.name}
+            </a>
+          ))}
         </nav>
 
+        {/* Botões extras */}
         <div className="flex items-center gap-2">
           {/*<Button variant="hero" size="sm" className="hidden sm:flex">
-            Ver brinquedos
+            Ver Brinquedos
           </Button>*/}
-          
-          {/* Menu mobile */}
+
+          {/* Menu mobile toggle */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm">
-              Menu
+            <Button variant="ghost" size="icon" onClick={toggleMenu}>
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Menu Mobile */}
+      {menuOpen && (
+        <div className="md:hidden bg-background border-t px-4 pb-4">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="block py-2 text-foreground hover:text-primary"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
