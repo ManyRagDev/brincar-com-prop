@@ -9,8 +9,9 @@ import BlogPostPage from "./pages/blog/[slug]";
 import BlogAll from "./pages/BlogAll"; 
 import PostForm from "./pages/admin/PostForm";
 import ProdutosRecomendados from "./pages/ProdutosRecomendados";
+import ExtratorProduto from "./components/ExtratorProduto.tsx"; 
 
-
+import BeThemeConsole from "./pages/BeThemeConsole.tsx"; // ← ADICIONADO
 
 const queryClient = new QueryClient();
 
@@ -22,10 +23,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/extrator" element={<ExtratorProduto />} />
           <Route path="/admin/novo-post" element={<PostForm />} />
           <Route path="/blog" element={<BlogAll />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/produtos" element={<ProdutosRecomendados />} />
+          <Route path="/console-temas" element={<BeThemeConsole />} /> {/* ← ADICIONADO */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
