@@ -10,11 +10,13 @@ const Header = () => {
 
   const links = [
     { name: "Início", href: "#inicio" },
-    { name: "Sobre nós", href: "#Sobre" },
+    { name: "Sobre nós", href: "/Sobre" },
     { name: "Top Recomendações", href: "#recomendacoes" },
     { name: "Guias por Idade", href: "#guias" },
     { name: "Blog", href: "#blog" },
     { name: "Contato", href: "#contato" },
+    { name: "Privacidade", href: "/politica-de-privacidade" },
+    
   ];
 
   return (

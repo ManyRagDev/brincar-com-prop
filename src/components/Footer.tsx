@@ -1,4 +1,5 @@
 import { Heart, Instagram, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -18,7 +19,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Um portal de conteúdo dedicado a pais, mães e cuidadores que buscam informação de qualidade sobre brinquedos educativos e desenvolvimento infantil.
+              Um portal de conteúdo dedicado a pais, mães e cuidadores que buscam informação de qualidade
+              sobre brinquedos educativos e desenvolvimento infantil.
             </p>
             <p className="text-sm text-muted-foreground flex items-center gap-2">
               <Heart className="h-4 w-4 text-primary" />
@@ -31,24 +33,36 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Links úteis</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#sobre" className="text-muted-foreground hover:text-primary transition-smooth">
+                <Link
+                  to="/sobre"
+                  className="text-muted-foreground hover:text-primary transition-smooth"
+                >
                   Sobre
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contato" className="text-muted-foreground hover:text-primary transition-smooth">
+                <Link
+                  to="/contato"
+                  className="text-muted-foreground hover:text-primary transition-smooth"
+                >
                   Contato
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#politica" className="text-muted-foreground hover:text-primary transition-smooth">
+                <Link
+                  to="/politica-de-afiliados"
+                  className="text-muted-foreground hover:text-primary transition-smooth"
+                >
                   Política de Afiliados
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#privacidade" className="text-muted-foreground hover:text-primary transition-smooth">
-                  Privacidade
-                </a>
+                <Link
+                  to="/politica-de-privacidade"
+                  className="text-muted-foreground hover:text-primary transition-smooth"
+                >
+                  Política de Privacidade
+                </Link>
               </li>
             </ul>
           </div>
@@ -57,15 +71,17 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Conecte-se</h4>
             <div className="space-y-3">
-              <a 
-                href="https://instagram.com/brincareducando" 
+              <a
+                href="https://instagram.com/brincareducando"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-smooth"
               >
                 <Instagram className="h-5 w-5" />
                 @brincareducando
               </a>
-              <a 
-                href="mailto:contato@brincareducando.com.br" 
+              <a
+                href="mailto:contato@brincareducando.com.br"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-smooth"
               >
                 <Mail className="h-5 w-5" />
@@ -79,7 +95,7 @@ const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © 2024 Brincar Educando. Todos os direitos reservados.
+              © {new Date().getFullYear()} Brincar Educando. Todos os direitos reservados.
             </p>
             <p className="text-sm text-muted-foreground text-center md:text-right">
               <span className="text-primary">brincareducando.com.br</span> • Informação consciente para famílias

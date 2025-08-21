@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { ArrowLeft } from "lucide-react"; // ícone opcional
+import SocialShare from "@/components/SocialShare";
 
 
 
@@ -45,9 +46,14 @@ export default function BlogPostPage() {
                 {post.date} • {post.readTime}
             </p>
 
+            <p><SocialShare /></p>
+            
+
+            
             <MDXProvider components={components}>
                 <PostComponent />
             </MDXProvider>
+            <SocialShare />
         </article>
 
 

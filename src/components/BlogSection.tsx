@@ -63,8 +63,8 @@ const BlogSection = () => {
                 </div>
 
                 <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-smooth">
-                  <a href={`/blog/${post.slug}`} className="text-primary hover:underline flex items-center gap-1">
-                    {post.title}</a>
+                  <Link to={`/blog/${post.slug}`} state={{ from: location.pathname }} className="text-primary hover:underline flex items-center gap-1">
+                    {post.title}</Link>
                 </h3>
 
                 <p className="text-muted-foreground mb-4 leading-relaxed">
