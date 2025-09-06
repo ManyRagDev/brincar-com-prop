@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soluções recomendadas para noites mais tranquilas</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;          /* slate-900 */
+      --muted:#475569;         /* slate-600 */
+      --primary:#2563eb;       /* blue-600 */
+      --primary-700:#1d4ed8;   /* blue-700 */
+      --border:#e2e8f0;        /* slate-200 */
+      --card:#ffffff;
+      --soft:#f8fafc;          /* slate-50 */
+      --green-50:#ecfdf5;
+      --green-600:#059669;
+      --amber-50:#fffbeb;
+      --amber-600:#b45309;
+      --indigo-50:#eef2ff;
+      --shadow:0 4px 16px rgba(15,23,42,.06);
+      --radius:16px;
+      --radius-sm:12px;
+      --gap:16px;
+      --max:880px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    .container{max-width:var(--max);margin-inline:auto;padding:32px 20px}
+    h1{font-size:clamp(28px,4vw,36px);line-height:1.2;margin:0 0 8px}
+    h2{font-size:clamp(22px,3.2vw,28px);line-height:1.25;margin:24px 0 12px}
+    p.lead{color:var(--muted);margin:0 0 20px}
+    .muted{color:var(--muted)}
+
+    /* HERO */
+    .hero{
+      background:linear-gradient(90deg,var(--soft),var(--indigo-50));
+      border-radius:var(--radius);
+      padding:28px 22px;
+      margin-bottom:28px;
+      box-shadow:var(--shadow);
+    }
+    .hero-actions{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:12px;padding:12px 18px;font-weight:600;text-decoration:none;
+      border:1px solid transparent;transition:.2s ease;white-space:nowrap
+    }
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{background:var(--primary-700)}
+    .btn-outline{border-color:var(--border);color:var(--text)}
+    .btn-outline:hover{background:#f1f5f9}
+
+    /* BLOCKS */
+    .stack{display:grid;gap:16px}
+    .card{
+      background:var(--card);border:1px solid var(--border);
+      border-radius:var(--radius-sm);padding:16px;box-shadow:var(--shadow)
+    }
+    .checklist ol{margin:8px 0 0 20px;padding:0}
+    .checklist li{margin:6px 0}
+    .tip{background:var(--green-50);border-color:#bbf7d0}
+    .tip .title{color:var(--green-600);font-weight:700;margin-bottom:6px}
+    .callout{background:#f5f7ff;border-color:#c7d2fe}
+    .callout .title{color:#4f46e5;font-weight:700;margin-bottom:6px}
+    .warning{background:var(--amber-50);border-color:#fde68a}
+    .warning .title{color:var(--amber-600);font-weight:700;margin-bottom:6px}
+
+    /* PRODUCTS */
+    .products{display:grid;gap:16px;margin-top:10px}
+    @media (min-width:520px){.products{grid-template-columns:repeat(2,1fr)}}
+    @media (min-width:860px){.products{grid-template-columns:repeat(3,1fr)}}
+    .product{
+      background:var(--card);border:1px solid var(--border);
+      border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);
+      display:flex;flex-direction:column;justify-content:space-between
+    }
+    .product img{
+      width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#f1f5f9
+    }
+    .product h3{font-size:16px;margin:10px 0 6px}
+    .product p{font-size:14px;color:var(--muted);margin:0 0 12px}
+    .product .btn{width:100%}
+
+    /* SECTION SPACING */
+    .section{margin:28px 0}
+    .center{display:flex;justify-content:center}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .cta-row .btn{padding:12px 16px}
+
+    /* FOOTER CTA */
+    .footer-cta{margin-top:18px}
+
+    /* STICKY (mobile only) */
+    .sticky{
+      position:fixed;left:0;right:0;bottom:0;z-index:50;
+      background:#fff;border-top:1px solid var(--border);
+      padding:12px;display:flex;gap:10px
+    }
+    @media (min-width:768px){.sticky{display:none}}
+    .spacer{height:84px} /* espaço para o sticky no mobile */
+
+    /* Small helpers */
+    .divider{height:1px;background:var(--border);margin:24px 0}
+  </style>
+</head>
+<body>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Soluções recomendadas para noites mais tranquilas</h1>
+      <p class="lead">Dicas práticas + aliados seguros para transformar a rotina de sono do seu bebê.</p>
+      <div class="hero-actions">
+        <a href="#solucoes-sono" class="btn btn-primary">Ver soluções que ajudam no sono</a>
+        <a href="/guia-brinquedos-por-idade" class="btn btn-outline">Baixar guia por idade (gratuito)</a>
+      </div>
+    </section>
+
+    <!-- BLOCO CONDENSADO DE VALOR -->
+    <section class="stack">
+      <div class="card checklist">
+        <div class="title"><strong>Antes de comprar: ajuste 5 pontos-chave</strong></div>
+        <ol>
+          <li><strong>Escuridão real</strong>: blackout total (melatonina agradece).</li>
+          <li><strong>Ruído constante</strong>: som contínuo e baixo (~50 dB) para abafar interrupções.</li>
+          <li><strong>Temperatura</strong>: 20–22 °C e roupa em camadas (sem suar, sem frio).</li>
+          <li><strong>Ritual curto</strong>: 20–30 min sempre igual (banho morno → mamada calma → canção).</li>
+          <li><strong>Hora certa</strong>: respeite <em>janelas de vigília</em> para evitar supercansaço.</li>
+        </ol>
+      </div>
+
+      <div class="card tip">
+        <div class="title">Como saber se está funcionando?</div>
+        <div>Observe por <strong>3–5 dias</strong>: adormecer mais rápido, menos despertares e cochilos mais estáveis indicam que o ambiente/rotina estão no caminho certo.</div>
+      </div>
+
+      <div class="card callout">
+        <div class="title">Potencialize com os aliados certos</div>
+        <div>Com o básico ajustado, alguns <strong>recursos complementares</strong> aceleram os resultados (e diminuem recaídas). Veja abaixo os itens que selecionamos por eficácia e segurança.</div>
+      </div>
+
+      <div class="cta-row">
+        <a href="#solucoes-sono" class="btn btn-primary">Ver soluções que ajudam no sono</a>
+        <a href="/guia-brinquedos-por-idade" class="btn btn-outline">Baixar guia por idade (gratuito)</a>
+      </div>
+    </section>
+
+    <!-- ÂNCORA PARA O BOTÃO -->
+    <span id="solucoes-sono"></span>
+
+    <!-- INTRO PRODUTOS -->
+    <section class="section">
+      <p>Selecionamos 3 aliados práticos que ajudam a melhorar o sono do bebê e devolvem tranquilidade para toda a família:</p>
+    </section>
+
+    <!-- GRADE DE PRODUTOS -->
+    <section class="products">
+      <article class="product">
+        <img src="/images/produtos/white-noise.jpg" alt="Máquina de Ruído Branco" />
+        <h3>Máquina de Ruído Branco</h3>
+        <p>Abafa ruídos externos e ajuda a criar um ambiente consistente para o sono.</p>
+        <a class="btn btn-primary" href="https://amzn.to/SEU_LINK" target="_blank" rel="noopener nofollow">Ver na Amazon/ML</a>
+      </article>
+
+      <article class="product">
+        <img src="/images/produtos/naninha.jpg" alt="Naninha de Apego" />
+        <h3>Naninha de Apego</h3>
+        <p>Suporte emocional suave, excelente para parte do ritual de dormir.</p>
+        <a class="btn btn-primary" href="https://www.mercadolivre.com.br/SEU_LINK" target="_blank" rel="noopener nofollow">Ver na Amazon/ML</a>
+      </article>
+
+      <article class="product">
+        <img src="/images/produtos/livro-sono.jpg" alt="Livro: Sono Infantil (Guia Prático)" />
+        <h3>Livro: Sono Infantil (Guia Prático)</h3>
+        <p>Estratégias gentis e baseadas em evidências para organizar a rotina do sono.</p>
+        <a class="btn btn-primary" href="https://amzn.to/SEU_LINK" target="_blank" rel="noopener nofollow">Ver na Amazon/ML</a>
+      </article>
+    </section>
+
+    <!-- CALLOUT ISCA DIGITAL -->
+    <section class="section">
+      <div class="card callout" style="text-align:center">
+        <div class="title">Quer mais ajuda prática?</div>
+        <p>Baixe gratuitamente o <strong>Guia de Brinquedos por Idade (0–3 anos)</strong> com ideias de atividades que favorecem o sono e o desenvolvimento.</p>
+        <div class="center">
+          <a class="btn btn-primary" href="/guia-brinquedos-por-idade">Quero o guia gratuito</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANO PRÁTICO -->
+    <section class="section">
+      <h2>Plano prático em 7 dias</h2>
+      <div class="card checklist">
+        <div class="title"><strong>Pequenas mudanças que fazem diferença</strong></div>
+        <ol>
+          <li>Escureça o quarto do bebê (cortina blackout ajuda muito).</li>
+          <li>Estabeleça um ritual fixo de 20–30 minutos antes de dormir.</li>
+          <li>Observe os sinais de sono (bocejo, olhar parado) e não atrase a hora.</li>
+          <li>Use ruído branco suave para acalmar e bloquear barulhos externos.</li>
+          <li>Dê a última mamada calma, sem distrações.</li>
+          <li>Reduza a ajuda aos poucos (colo, balanço) para incentivar independência.</li>
+          <li>Anote horários de sono/vigília para entender o padrão do seu bebê.</li>
+        </ol>
+      </div>
+
+      <div class="stack" style="margin-top:16px">
+        <div class="card tip">
+          <div class="title">Dica rápida</div>
+          <div>Evite estimular demais nos 60 minutos antes do sono. Luz baixa e brincadeiras calmas ajudam o bebê a relaxar.</div>
+        </div>
+
+        <div class="card warning">
+          <div class="title">Sono seguro em primeiro lugar</div>
+          <div>Sempre de barriga para cima, em colchão firme e sem objetos soltos no berço. Segurança vem antes de qualquer técnica.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENCERRAMENTO + CTA -->
+    <section class="section">
+      <h2>Mais tranquilidade começa hoje</h2>
+      <p>Cada bebê é único, mas pequenas ações consistentes trazem grandes resultados. Combine rotina, carinho e os recursos certos — e transforme suas noites em momentos de paz.</p>
+      <div class="center footer-cta">
+        <a
+          class="btn btn-primary"
+          href="/blog/como-ajudar-seu-bebe-a-dormir-a-noite-inteira-guia-para-pais-cansados"
+        >Quero o guia completo de sono</a>
+      </div>
+    </section>
+
+    <!-- Espaço para o sticky no mobile -->
+    <div class="spacer" aria-hidden="true"></div>
+  </main>
+
+  <!-- STICKY CTA (mobile only) -->
+  <div class="sticky" role="region" aria-label="Ações rápidas">
+    <a href="#solucoes-sono" class="btn btn-outline" style="flex:1">Ver soluções</a>
+    <a href="/guia-brinquedos-por-idade" class="btn btn-primary" style="flex:1">Baixar guia</a>
+  </div>
+
+  <script>
+    // Scroll suave para âncoras #id
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  </script>
+</body>
+</html>

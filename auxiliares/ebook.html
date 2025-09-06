@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-book do Sono: Diagramação para Impressão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCDC;
+        }
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        @media print {
+            .a4-page {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-[#FDFCDC] text-gray-800">
+
+    <!-- Page 1 -->
+    <div class="a4-page">
+        <header class="text-center pt-10">
+            <div class="mb-44">
+                <!-- Coloque a URL do seu ícone ou logotipo aqui -->
+                <img src="quadrado_logo.png" alt="Logo Brincar Educando" class="mx-auto w-28 h-28 object-cover">
+                <!--<h2 class="text-2xl font-bold text-[#00AFB9]">Brincar Educando</h2>-->
+            </div>
+            <h1 class="text-5xl font-bold text-[#0081A7] mb-4">O Guia Completo do Sono do Bebê</h1>
+            <h2 class="text-3xl font-semibold text-[#00AFB9] mb-4">Da Ciência à Prática</h2>
+            <div class="w-24 h-2 bg-[#F07167] mx-auto rounded-full mb-8"></div>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">Bem-vindo(a) à jornada do sono do seu bebê, um dos maiores desafios e, ao mesmo tempo, uma das experiências mais recompensadoras da maternidade e paternidade. Este e-book foi criado com base em pesquisas científicas de ponta para guiar você, sem mitos ou receitas mágicas, para noites mais tranquilas e dias mais leves.</p>
+            <p class="text-lg text-gray-700 leading-relaxed">Para uma boa compreensão, é necessário estar atento às particularidades do seu bebê e tentar identificar os padrões.</p>
+            <p class="text-lg text-gray-700 leading-relaxed"> Vamos desde o desenvolvimento básico até as estratégias de manejo mais eficazes, sempre com o foco no bem-estar e segurança de sua família.</p>
+        </header>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 1</p>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="a4-page">
+        <div>
+            <h2 class="text-2xl font-bold text-[#0081A7] mb-2">Capítulo 1: Padrões de Sono por Idade</h2>
+            <p class="text-base text-gray-700 mb-4">O sono é um processo dinâmico. A necessidade total de horas de sono muda à medida que o bebê cresce, e a consolidação do sono noturno é um marco de desenvolvimento, não um evento instantâneo.</p><p class="text-base text-gray-700 mb-4"> Veja como os padrões de sono evoluem do nascimento aos 3 anos:</p>
+            <div class="chart-container">
+                <canvas id="sleepPatternsChart"></canvas>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">O gráfico acima ilustra a distribuição média de horas de sono ao longo de um dia de 24 horas. Note a diminuição gradual do sono diurno (cochilos) e o aumento do sono noturno. Os despertares são normais e esperados, especialmente nos primeiros meses, e não devem ser vistos como um problema.</p>
+            <h3 class="text-xl font-bold text-[#F07167] mt-6">Regressões do Sono: O Que São?</h3>
+            <p class="text-base text-gray-700">As "regressões" são períodos de sono conturbado que ocorrem em picos de desenvolvimento (ex: 4, 8, 12 meses). Elas são um sinal de que o bebê está aprendendo novas habilidades (rolar, engatinhar) ou passando por mudanças fisiológicas. São temporárias e <strong>não indicam que você está fazendo algo errado.</strong> </p><p></p><p class="text-base text-gray-700">Mantenha a rotina e a consistência para passar por essa fase.</p>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 2</p>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="a4-page">
+        <div>
+            <h2 class="text-2xl font-bold text-[#0081A7] mb-2">Capítulo 2: Sono Seguro - A Prioridade Máxima</h2>
+            <p class="text-base text-gray-700 mb-4">A prevenção da Síndrome da Morte Súbita do Lactente (SMSL) é um dos tópicos mais importantes. As diretrizes da Academia Americana de Pediatria (AAP) e Sociedade Brasileira de Pediatria (SBP) são claras e baseadas em evidências científicas robustas que reduzem significativamente o risco. Siga estas recomendações para todos os sonos, diurnos e noturnos.</p>
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-sm border-l-4 border-[#00AFB9]">
+                    <h3 class="font-bold text-xl text-[#0081A7] mb-2">Posição de Dormir: Barriga para Cima</h3>
+                    <p class="text-base text-gray-700">A posição de dormir de barriga para cima é a única comprovadamente segura. Evite colocar o bebê de lado ou de bruços, pois essas posições aumentam o risco de sufocamento. Se o bebê rolar sozinho, não é necessário reposicioná-lo, mas sempre o inicie de barriga para cima.</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-sm border-l-4 border-[#F07167]">
+                    <h3 class="font-bold text-xl text-[#0081A7] mb-2">Ambiente de Sono: Sem Objetos Soltos</h3>
+                    <p class="text-base text-gray-700">O berço deve estar completamente livre de travesseiros, cobertores, protetores, ursos de pelúcia ou qualquer outro item macio. A superfície deve ser firme e o lençol, justo. O superaquecimento também é um fator de risco; use roupas leves e evite cobrir a cabeça do bebê.</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-sm border-l-4 border-[#FED9B7]">
+                    <h3 class="font-bold text-xl text-[#0081A7] mb-2">Compartilhar o Quarto, Não a Cama</h3>
+                    <p class="text-base text-gray-700">Compartilhar o quarto (mantendo o berço do bebê ao lado da cama dos pais) reduz o risco de SMSL em até 50%. No entanto, compartilhar a cama aumenta os riscos de sufocamento ou estrangulamento, especialmente se os pais estiverem exaustos, fumam ou consomem álcool.</p> <p class="text-base text-gray-700">A melhor opção é ter o bebê no seu próprio berço, no mesmo quarto.</p>
+                    <p class="text-base text-gray-700">Vale ressaltar que estamos tratando apenas da <strong>segurança</strong> do bebê.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 3</p>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="a4-page">
+        <div>
+            <h2 class="text-2xl font-bold text-[#0081A7] mb-2">Capítulo 3: Pilares do Sono & Rotina</h2>
+            <p class="text-base text-gray-700 mb-4">A biologia é um fator importante, mas a rotina e o ambiente são os elementos que você pode controlar. O gráfico abaixo mostra como os pais têm maior influência sobre a rotina e o ambiente, enquanto a biologia (ritmo circadiano, maturação neurológica) é um processo que se desenvolve naturalmente.</p>
+            <div class="chart-container">
+                <canvas id="sleepPillarsChart"></canvas>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div>
+                    <h3 class="text-xl font-bold text-[#F07167] mb-2">Criando uma Rotina Noturna</h3>
+                    <p class="text-base text-gray-700">Uma rotina consistente de 20-30 minutos, com atividades previsíveis, ajuda a sinalizar para o cérebro do bebê que é hora de desacelerar. Exemplo: banho, massagem, história, canção de ninar. Mantenha os horários de dormir e acordar consistentes para fortalecer o relógio biológico.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-[#F07167] mb-2">O Ambiente Perfeito</h3>
+                    <p class="text-base text-gray-700">O quarto deve ser o mais escuro possível, silencioso e com uma temperatura confortável. Elimine a exposição a telas (TV, celular, tablet) pelo menos uma hora antes de dormir, pois a luz azul interfere na produção de melatonina, o hormônio do sono.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 4</p>
+        </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="a4-page">
+        <div>
+            <h2 class="text-2xl font-bold text-[#0081A7] mb-2">Capítulo 4: Intervenções e Desafios</h2>
+            <p class="text-base text-gray-700 mb-4">Se os despertares noturnos se tornam um problema, as intervenções comportamentais podem ser uma solução. Elas são a primeira linha de tratamento recomendada e, quando aplicadas corretamente, não prejudicam o vínculo de apego entre pais e filhos. A consistência é a chave do sucesso.</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse mt-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b-2 border-[#0081A7] p-2 font-bold text-[#0081A7]">Método</th>
+                            <th class="border-b-2 border-[#0081A7] p-2 font-bold text-[#0081A7]">Princípio Básico</th>
+                            <th class="border-b-2 border-[#0081A7] p-2 font-bold text-[#0081A7]">Vantagens</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-2 border-b"><strong>Extinção Gradual</strong></td>
+                            <td class="p-2 border-b">Os pais verificam o bebê em intervalos de tempo que se expandem gradualmente (ex: 5, 10, 15 minutos), sem pegá-lo no colo.</td>
+                            <td class="p-2 border-b">Mais suave, permite que os pais se sintam mais presentes.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-2 border-b"><strong>Fading</strong></td>
+                            <td class="p-2 border-b">Os pais se sentam ao lado do berço e, a cada noite, movem a cadeira para mais longe até saírem do quarto.</td>
+                            <td class="p-2 border-b">Abordagem de contato próximo, sem a ansiedade do choro prolongado.</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-2 border-b"><strong>Extinção (CIO)</strong></td>
+                            <td class="p-2 border-b">O bebê é colocado no berço acordado e não há retorno até a manhã seguinte, a menos que haja uma necessidade médica.</td>
+                            <td class="p-2 border-b">Geralmente, produz resultados mais rápidos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-lg shadow-sm border-l-4 border-[#00AFB9] mt-6">
+                <h3 class="font-bold text-xl text-[#0081A7] mb-2">Mito vs. Evidência: Treino de Sono e Vínculo</h3>
+                <p class="text-base text-gray-700">A ideia de que o treino de sono causa trauma ou prejudica o vínculo de apego é um mito. Pesquisas de longo prazo demonstram que, quando feitos de forma apropriada, esses métodos melhoram a qualidade do sono do bebê e reduzem a exaustão parental, fortalecendo a relação.</p>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 5</p>
+        </div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="a4-page">
+        <div>
+            <h2 class="text-2xl font-bold text-[#0081A7] mb-2">Capítulo 5: O Bem-Estar dos Pais</h2>
+            <p class="text-base text-gray-700 mb-4">A privação de sono não afeta apenas o bebê. A falta de descanso adequado para os pais pode levar a problemas de saúde mental e comprometer a qualidade de vida. Cuidar de si mesmo é uma necessidade, não um luxo.</p>
+             <div class="chart-container">
+                <canvas id="parentalImpactChart"></canvas>
+            </div>
+            <p class="text-sm text-gray-600 mt-4">A pesquisa aponta que uma parcela significativa de pais que sofrem de privação de sono crônica relata sintomas de ansiedade e depressão. A qualidade do sono dos pais está diretamente ligada à sua capacidade de responder de forma paciente e carinhosa ao bebê.</p>
+            <h3 class="text-xl font-bold text-[#F07167] mt-6">Estratégias de Autocuidado</h3>
+            <ul class="list-disc list-inside space-y-2 text-base text-gray-700 mt-2">
+                <li><strong class="text-[#0081A7]">Divida as tarefas:</strong> Combine com seu parceiro(a) para se revezarem nas madrugadas. Mesmo um turno de 4-5 horas de sono ininterrupto pode fazer uma enorme diferença.</li>
+                <li><strong class="text-[#0081A7]">Durma quando o bebê dorme:</strong> Deixe a louça na pia e os e-mails para depois. Priorize o seu descanso durante os cochilos diurnos do bebê.</li>
+                <li><strong class="text-[#0081A7]">Construa uma rede de apoio:</strong> Não hesite em pedir ajuda a familiares ou amigos para cuidar do bebê, permitindo-se uma folga.</li>
+            </ul>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 6</p>
+        </div>
+    </div>
+
+    <!-- Page 7 -->
+    <div class="a4-page">
+        <div class="flex-1">
+            <h2 class="text-2xl font-bold text-[#0081A7] mb-2">Conclusão: O Guia para Noites Felizes</h2>
+            <p class="text-base text-gray-700 mb-4">O sono é um dos pilares mais importantes da saúde e do desenvolvimento do bebê. Com este guia, esperamos ter fornecido as ferramentas e o conhecimento necessários para navegar por essa jornada com confiança e tranquilidade. Lembre-se, o objetivo não é a perfeição, mas sim a consistência, a paciência e a construção de hábitos saudáveis que beneficiarão toda a família.</p>
+            <p class="text-base text-gray-700 mb-4">Confie no processo, confie na ciência e, acima de tudo, confie em si mesmo. Uma boa noite de sono está ao seu alcance.</p>
+            <h3 class="text-xl font-bold text-[#F07167] mt-6 mb-2">Referências Científicas</h3>
+            <p class="text-sm text-gray-600">Este e-book foi elaborado com base nas seguintes fontes primárias e secundárias de alta qualidade, garantindo a solidez das informações:</p>
+            <ul class="list-disc list-inside text-sm text-gray-700 mt-2">
+                <li>Moon, R. Y. et al. (2016). SIDS and Other Sleep-Related Infant Deaths: Updated 2016 Recommendations. Pediatrics.</li>
+                <li>Mindell, J. A. et al. (2006). Behavioral Interventions for Infant Sleep Problems: A Randomized Controlled Trial. Pediatrics.</li>
+                <li>Hiscock, H. et al. (2014). Infant sleep: A systematic review of observational studies. Pediatrics.</li>
+                <li>Sociedade Brasileira de Pediatria (2016). Consenso sobre o Sono em Crianças e Adolescentes.</li>
+                <li>Blunden, S. I. (2011). Meta-analysis of behavioral sleep interventions for pediatric sleep problems. Journal of Sleep Research.</li>
+            </ul>
+        </div>
+        <div class="mb-44">
+        </div>
+        <div class="mb-44">
+                <!-- Coloque a URL do seu ícone ou logotipo aqui -->
+                <img src="quadrado_logo.png" alt="Logo Brincar Educando" class="mx-auto w-28 h-28 object-cover">
+                <!--<h2 class="text-2xl font-bold text-[#00AFB9]">Brincar Educando</h2>-->
+            </div>
+        <div class="text-center text-sm text-gray-500 mt-auto">
+            <p>Página 7</p>
+        </div>
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) { return label.join(' '); }
+            return label;
+        };
+        const processLabels = (labels) => {
+            const MAX_LENGTH = 16;
+            return labels.map(label => {
+                if (label.length <= MAX_LENGTH) { return label; }
+                const words = label.split(' ');
+                const newLabel = [];
+                let line = '';
+                words.forEach(word => {
+                    if ((line + word).length > MAX_LENGTH) {
+                        newLabel.push(line.trim());
+                        line = '';
+                    }
+                    line += word + ' ';
+                });
+                newLabel.push(line.trim());
+                return newLabel;
+            });
+        };
+        const colors = {
+            blueAqua: '#0081A7', blueTeal: '#00AFB9', lightYellow: '#FDFCDC',
+            lightOrange: '#FED9B7', coral: '#F07167'
+        };
+
+        new Chart(document.getElementById('sleepPatternsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['0-3 meses', '4-11 meses', '1-2 anos', '2-3 anos'],
+                datasets: [{
+                    label: 'Sono Noturno (horas)', data: [8.5, 10, 11, 11.5], backgroundColor: colors.blueAqua,
+                }, {
+                    label: 'Sono Diurno (horas)', data: [7.5, 4, 2.5, 1.5], backgroundColor: colors.coral,
+                }]
+            },
+            options: {
+                maintainAspectRatio: false, responsive: true,
+                scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: '  Total de Horas de Sono em 24h' } } },
+                plugins: {
+                    title: { display: true, text: 'Horas de Sono por Faixa Etária' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('sleepPillarsChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Rotina Consistente', 'Ambiente Adequado', 'Fatores Biológicos'],
+                datasets: [{
+                    label: 'Nível de Influência Parental', data: [9, 8, 4],
+                    backgroundColor: 'rgba(0, 129, 167, 0.2)', borderColor: colors.blueAqua, pointBackgroundColor: colors.blueAqua,
+                }]
+            },
+            options: {
+                maintainAspectRatio: false, responsive: true,
+                scales: { r: { angleLines: { display: false }, suggestedMin: 0, suggestedMax: 10 } },
+                plugins: {
+                    title: { display: true, text: 'Fatores que Influenciam o Sono' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('parentalImpactChart'), {
+            type: 'doughnut',
+            data: {
+                labels: processLabels(['Sintomas de Ansiedade/Depressão Pós-Parto', 'Sem Sintomas Significativos']),
+                datasets: [{
+                    label: 'Impacto na Saúde Mental', data: [35, 65],
+                    backgroundColor: [colors.coral, colors.blueTeal], hoverOffset: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false, responsive: true,
+                plugins: {
+                    title: { display: true, text: 'Saúde Mental Parental e Privação de Sono (%)' },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -67,7 +67,7 @@ const BlogAll = () => {
                 </div>
 
                 <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-smooth">
-                  {post.title}
+                  <Link to={`/blog/${post.slug}`} state={{ from: "/blog" }}>{post.title}</Link>
                 </h3>
 
                 <p className="text-muted-foreground mb-4 leading-relaxed">

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ShoppingCart, Star, Shield, Heart } from "lucide-react";
+import { ShoppingCart, Star, Shield, Heart, Link } from "lucide-react";
 
 const CTASection = () => {
   return (
@@ -58,9 +58,11 @@ const CTASection = () => {
               <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-smooth" />
               Ver brinquedos recomendados
             </Button>
+            <Link to="/lp/EBOOK-guia-completo-do-sono[Brincar-Educando].pdf">
             <Button variant="outline" size="xl">
-              Baixar guia gratuito
+              Baixar guia do sono gratuito
             </Button>
+            </Link>
           </div>
 
           <p className="text-xs text-muted-foreground mt-6">
