@@ -72,7 +72,7 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Conecte-se</h4>
             <div className="space-y-3">
               <a
-                href="https://instagram.com/brincareducando"
+                href="https://instagram.com/brincareducando__"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-smooth"

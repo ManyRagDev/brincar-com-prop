@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado! Brincar Educando</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCDC;
+        }
+    </style>
+</head>
+<body class="bg-[#FDFCDC] text-gray-800 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full text-center">
+        <div class="mb-6">
+            <div class="w-24 h-24 mx-auto mb-4 overflow-hidden rounded-full">
+                <img src="quadrado_logo.png" alt="Logo Brincar Educando" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-bold text-[#0081A7] mb-2">Obrigado por Baixar o E-book!</h1>
+            <p class="text-lg text-gray-700">O material já foi aberto no seu navegador.</p>
+        </div>
+
+        <div class="w-24 h-2 bg-[#F07167] mx-auto rounded-full mb-8"></div>
+
+        <h2 class="text-2xl font-bold text-[#00AFB9] mb-4">Mantenha-se Conectado(a) Conosco</h2>
+        <p class="text-base text-gray-600 mb-6">Cadastre-se para receber conteúdos exclusivos, dicas de desenvolvimento infantil e promoções especiais da Brincar Educando. Seu cadastro é gratuito e rápido.</p>
+
+        <form action="processa_cadastro.php" method="POST" class="space-y-4">
+            <div>
+                <input type="text" id="name" name="name" placeholder="Nome completo" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00AFB9]">
+            </div>
+            <div>
+                <input type="email" id="email" name="email" placeholder="E-mail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00AFB9]">
+            </div>
+            <div>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="WhatsApp (Opcional)" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00AFB9]">
+            </div>
+            <div>
+                <textarea id="message" name="message" rows="3" placeholder="Deixe uma mensagem (Opcional)" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00AFB9]"></textarea>
+            </div>
+            <div class="flex items-start">
+                <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 mr-2 accent-[#F07167]">
+                <label for="newsletter" class="text-sm text-gray-600 text-left cursor-pointer select-none">
+                    Quero receber newsletters e conteúdos exclusivos da Brincar Educando sobre desenvolvimento infantil e maternidade/paternidade.
+                </label>
+            </div>
+            <button type="submit" class="w-full bg-[#F07167] text-white font-bold py-3 rounded-lg shadow-md hover:bg-[#F07167] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F07167]">Enviar</button>
+        </form>
+    </div>
+
+</body>
+</html>

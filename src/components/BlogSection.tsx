@@ -17,11 +17,13 @@ const formatDate = (dateString: string) => {
 };
 
 const BlogSection = () => {
+  const allPosts = useMemo(() => getAllPosts(), []);
   const blogPosts = useMemo(() => {
-    return getAllPosts()
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // mais recente primeiro
-      .slice(0, 3); // só os 3 primeiros
-  }, []);
+    return allPosts
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 3);
+  }, [allPosts]);
+
   console.log(blogPosts); // 👈 adicione aqui
 
 
@@ -89,11 +91,11 @@ const BlogSection = () => {
         <div className="text-center">
           <Link to="/blog">
             <Button variant="outline" size="lg">
-              Ver todos os artigos
+              Ver todos os artigos ({allPosts.length})
             </Button>
           </Link>
-
         </div>
+
       </div>
     </section>
   );

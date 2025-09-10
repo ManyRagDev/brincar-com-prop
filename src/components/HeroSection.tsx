@@ -67,7 +67,7 @@ const HeroSection = () => {
 
             <Link to="/blog">
               <Button variant="soft" size="xl">
-                Ler nossas resenhas
+                Ler nossos artigos
               </Button>
             </Link>
           </div>
