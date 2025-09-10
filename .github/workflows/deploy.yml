@@ -7,19 +7,49 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
-      - run: npm ci
-      - run: npm run build
+      # Detecta gerenciador de pacotes e instala deps
+      - name: Install deps (npm/yarn/pnpm)
+        run: |
+          set -e
+          if [ -f pnpm-lock.yaml ]; then
+            echo "Using pnpm"
+            corepack enable
+            pnpm install --frozen-lockfile
+            echo "BUILD_CMD=pnpm run build" >> $GITHUB_ENV
+          elif [ -f yarn.lock ]; then
+            echo "Using yarn"
+            corepack enable
+            yarn install --frozen-lockfile
+            echo "BUILD_CMD=yarn build" >> $GITHUB_ENV
+          else
+            echo "Using npm"
+            # se não houver package-lock, cai para npm install
+            (npm ci || npm install)
+            echo "BUILD_CMD=npm run build" >> $GITHUB_ENV
+          fi
+
+      - name: Build
+        run: |
+          set -e
+          echo "Running: $BUILD_CMD"
+          eval "$BUILD_CMD"
 
       # Reorganiza a saída para o layout da Hostinger
       - name: Reshape dist to Hostinger layout
         run: |
+          set -e
           mkdir -p dist/assets dist/images dist/src/content/posts
 
           # Move quaisquer .css/.js/.map soltos p/ dist/assets
@@ -60,6 +90,7 @@ jobs:
 
       - name: Push dist to deploy branch
         run: |
+          set -e
           cd dist
           git init
           git config user.name "github-actions"
