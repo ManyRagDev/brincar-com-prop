@@ -17,32 +17,16 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # ── Ajustar a estrutura de saída para refletir sua Hostinger ──────────────
+      # Reorganiza a saída para o layout da Hostinger
       - name: Reshape dist to Hostinger layout
         run: |
-          # Garante subpastas
-          mkdir -p dist/assets
-          mkdir -p dist/images
-          mkdir -p dist/src/content/posts
+          mkdir -p dist/assets dist/images dist/src/content/posts
 
-          # 1) ASSETS DO VITE (normalmente já estão em dist/assets*)
-          #    Se o Vite soltou assets em outra pasta (ex.: dist/_app ou dist/assets-xyz),
-          #    trazemos tudo que for .css/.js/.map pra dist/assets
-          #    (sem quebrar se não existir).
-          if [ -d dist/assets ]; then
-            echo "assets já existem em dist/assets"
-          else
-            mkdir -p dist/assets
-          fi
-
-          # Move quaisquer .css/.js/.map espalhados para dist/assets, preservando nomes
+          # Move quaisquer .css/.js/.map soltos p/ dist/assets
           find dist -maxdepth 2 -type f \( -name "*.css" -o -name "*.js" -o -name "*.map" \) -not -path "dist/assets/*" -exec mv -f {} dist/assets/ \; || true
 
-          # 2) ÍCONES E ARQUIVOS DE RAIZ
-          #    O Vite normalmente já deixa index.html e favicon na raiz de dist.
-          #    Nada a fazer aqui, mas se você guarda ícones em public/, copie também:
+          # Copia ícones/arquivos de public (exceto index.html)
           if [ -d public ]; then
-            # Copia apenas arquivos comuns da raiz de public para raiz de dist (sem sobrescrever index.html do build)
             shopt -s nullglob
             for f in public/*; do
               if [ -f "$f" ] && [ "$(basename "$f")" != "index.html" ]; then
@@ -52,8 +36,7 @@ jobs:
             shopt -u nullglob
           fi
 
-          # 3) IMAGENS → dist/images
-          #    Tenta de public/images primeiro; se não existir, usa images/ na raiz do repo.
+          # Imagens → dist/images
           if [ -d public/images ]; then
             cp -R public/images/* dist/images/ 2>/dev/null || true
           fi
@@ -61,33 +44,20 @@ jobs:
             cp -R images/* dist/images/ 2>/dev/null || true
           fi
 
-          # 4) POSTS MDX → dist/src/content/posts
+          # MDX → dist/src/content/posts
           if [ -d src/content/posts ]; then
             cp -R src/content/posts/* dist/src/content/posts/ 2>/dev/null || true
           fi
 
-          # 5) .htaccess (se você mantém no repo)
-          #    Se existir em repo, copie pra raiz da dist
+          # .htaccess → raiz do deploy (dist/.htaccess)
           if [ -f .htaccess ]; then
             cp -f .htaccess dist/.htaccess
+          elif [ -f config/.htaccess ]; then
+            cp -f config/.htaccess dist/.htaccess
+          else
+            echo "WARNING: .htaccess não encontrado no repo; rotas de SPA podem quebrar."
           fi
 
-          # 6) Limpeza leve (opcional): remove quaisquer subpastas de nível 1
-          #    que não queremos publicar além de assets/images/src.
-          #    (Cuidado pra não apagar coisas necessárias do seu projeto)
-          shopt -s dotglob
-          for d in dist/*; do
-            base="$(basename "$d")"
-            if [ -d "$d" ] && [ "$base" != "assets" ] && [ "$base" != "images" ] && [ "$base" != "src" ]; then
-              # Mantém somente as pastas desejadas na raiz da publicação
-              # (descomente a linha abaixo se quiser forçar limpeza)
-              # rm -rf "$d"
-              :
-            fi
-          done
-          shopt -u dotglob
-
-      # ── Publica a dist “reformatada” no branch deploy ─────────────────────────
       - name: Push dist to deploy branch
         run: |
           cd dist
