@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+# 👇 Necessário para poder fazer git push no próprio repositório
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,7 +39,6 @@ jobs:
             echo "BUILD_CMD=yarn build" >> $GITHUB_ENV
           else
             echo "Using npm"
-            # se não houver package-lock, cai para npm install
             (npm ci || npm install)
             echo "BUILD_CMD=npm run build" >> $GITHUB_ENV
           fi
@@ -79,7 +82,7 @@ jobs:
             cp -R src/content/posts/* dist/src/content/posts/ 2>/dev/null || true
           fi
 
-          # .htaccess → raiz do deploy (dist/.htaccess)
+          # .htaccess → raiz do deploy
           if [ -f .htaccess ]; then
             cp -f .htaccess dist/.htaccess
           elif [ -f config/.htaccess ]; then
@@ -88,7 +91,12 @@ jobs:
             echo "WARNING: .htaccess não encontrado no repo; rotas de SPA podem quebrar."
           fi
 
+      # 👇 Usa o GITHUB_TOKEN para autenticar o push no branch deploy
       - name: Push dist to deploy branch
+        env:
+          REPO: ManyRagDev/brincar-com-prop
+          BRANCH: deploy
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
           cd dist
@@ -97,6 +105,6 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Deploy"
-          git branch -M deploy
-          git remote add origin https://github.com/ManyRagDev/brincar-com-prop.git
-          git push -f origin deploy
+          git branch -M "$BRANCH"
+          git remote add origin "https://x-access-token:${TOKEN}@github.com/${REPO}.git"
+          git push -f origin "$BRANCH"
