@@ -13,6 +13,13 @@
     rel="stylesheet"
   />
 
+  <style>
+    html {
+    scroll-behavior: smooth;
+    }
+
+  </style>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -25,7 +32,7 @@
           <h1>Noites mais tranquilas para o seu bebê e para você</h1>
           <p>Descubra o guia completo e os produtos essenciais que vão transformar o sono do seu filho e devolver a paz para a sua família.</p>
           <div class="hero-cta-group">
-            <a href="#solucoes" class="btn btn-primary">Ver Soluções Recomendadas</a>
+            <a href="#content-block" class="btn btn-primary">Conheça o Guia do Sono</a>
             <a href="#plano" class="btn btn-secondary">Plano Prático de 7 Dias</a>
           </div>
         </div>
@@ -85,13 +92,13 @@
 
       <p></p>
       <div class="mt-6" style="text-align:center; margin-top:2rem;">
-        <a href="URL_AQUI" id="btn-ver-mais" class="btn btn-secondary">Ver mais produtos</a>
+        <a href="https://brincareducando.com.br/produtos" id="btn-ver-mais" class="btn btn-secondary">Ver mais produtos</a>
       </div>
 
       <hr class="section-divider"/>
 
       <!-- CALLOUT + FORM -->
-      <div class="content-block callout" style="margin-top: 3rem;">
+      <div id="content-block" class="content-block callout" style="margin-top: 3rem;">
         <div class="icon">✨</div>
         <div>
           <h3>Quer mais ajuda prática?</h3>
@@ -212,14 +219,8 @@
       <p>Cada bebê é único, mas pequenas ações consistentes trazem grandes resultados. Combine rotina, carinho e os recursos certos — e transforme suas noites em momentos de paz.</p>
 
       <a
-        href="http://localhost:8080/blog/como-ajudar-seu-bebe-a-dormir-a-noite-inteira-guia-para-pais-cansados"
-        class="btn btn-primary" style="margin-top: 2rem;">
-        Quero o guia completo de sono
-      </a>
-
-      <a
         href="EBOOK-guia-completo-do-sono[Brincar-Educando].pdf"
-        class="btn btn-secondary"
+        class="btn btn-primary"
         style="margin-top: 2rem;"
         download
         rel="noopener noreferrer"
@@ -227,8 +228,24 @@
       >
         Quero o eBook gratuito
       </a>
+
+      <a
+        href="http://localhost:8080/blog/como-ajudar-seu-bebe-a-dormir-a-noite-inteira-guia-para-pais-cansados"
+        class="btn btn-secondary" style="margin-top: 2rem;" target="_blank">
+        Quero saber mais
+      </a>
+
+      
     </div>
   </section>
+  <footer class="footer">
+  <div class="container">
+    <p>© 2025 Brincar Educando. Todos os direitos reservados.</p>
+    <a href="https://brincareducando.com.br/politica-de-privacidade" target="_blank">Política de Privacidade</a> |
+    <a href="https://brincareducando.com.br/termos" target="_blank">Termos de Uso</a>
+  </div>
+</footer>
+
 
   <!-- Toast container -->
   <div id="toast" role="status" aria-live="polite" aria-atomic="true"

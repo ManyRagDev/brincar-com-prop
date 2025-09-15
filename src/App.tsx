@@ -16,6 +16,8 @@ import BeThemeConsole from "./pages/BeThemeConsole";
 import PoliticaPrivacidade from "@/pages/PoliticaPrivacidade";
 import LandingPage from "@/pages/landings/[slug]"; // <- NOVA ROTA (plural)
 import ScrollManager from "./components/ScrollManager";
+import ProductForm from "./components/ProductForm";
+import TermosDeUso from "./pages/TermosDeUso"; // se já existir
 
 const queryClient = new QueryClient();
 
@@ -35,7 +37,9 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/produtos" element={<ProdutosRecomendados />} />
           <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
+          <Route path="/termos" element={<TermosDeUso />} />
           <Route path="/console-temas" element={<BeThemeConsole />} />
+          <Route path="/cadastrar" element={<ProductForm />} />
 
           {/* rota dinâmica das LPs */}
           <Route path="/landings/:slug" element={<LandingPage />} />

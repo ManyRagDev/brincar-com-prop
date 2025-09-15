@@ -16,6 +16,7 @@ const Header = () => {
     { name: "Blog", href: "#blog" },
     { name: "Contato", href: "#contato" },
     { name: "Privacidade", href: "/politica-de-privacidade" },
+    { name: "Termos de Uso", href: "/termos"}
     
   ];
 
