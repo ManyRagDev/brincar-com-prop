@@ -87,9 +87,10 @@ jobs:
             echo "WARNING: .htaccess não encontrado no repo; rotas de SPA podem quebrar."
           fi
 
-          # Copiar auxiliares (landing pages) para o deploy
+          # Copiar auxiliares (landing pages) → vira lp no servidor
           if [ -d auxiliares ]; then
-            cp -R auxiliares dist/auxiliares
+            rm -rf dist/lp
+            cp -R auxiliares dist/lp
           fi
 
       # 🔹 Cria arquivo version.txt com commit e data
@@ -104,7 +105,7 @@ jobs:
           echo "Conteúdo de dist/"
           ls -R dist
 
-      # 🔹 Deploy automático via FTP para Hostinger
+      # 🔹 Deploy automático via FTP para Hostinger (incremental)
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
@@ -114,8 +115,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          server-dir: ./
-          dangerous-clean-slate: true
+          server-dir: public_html/
           exclude: |
             **/.git*
             **/node_modules/**
