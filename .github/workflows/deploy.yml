@@ -49,7 +49,7 @@ jobs:
       - name: Reshape dist to Hostinger layout
         run: |
           set -e
-          mkdir -p dist/assets dist/images dist/src/content/posts dist/src/content/Produtos
+          mkdir -p dist/assets dist/images dist/src/content/posts dist/src/content/produtos
 
           # Move quaisquer .css/.js/.map soltos p/ dist/assets
           find dist -maxdepth 2 -type f \( -name "*.css" -o -name "*.js" -o -name "*.map" \) -not -path "dist/assets/*" -exec mv -f {} dist/assets/ \; || true
@@ -73,14 +73,14 @@ jobs:
             cp -R images/* dist/images/ 2>/dev/null || true
           fi
 
-          # Posts (MDX) → dist/src/content/posts
+          # MDX (posts do blog) → dist/src/content/posts
           if [ -d src/content/posts ]; then
             cp -R src/content/posts/* dist/src/content/posts/ 2>/dev/null || true
           fi
 
-          # Produtos (JSON) → dist/src/content/Produtos
-          if [ -d src/content/Produtos ]; then
-            cp -R src/content/Produtos/* dist/src/content/Produtos/ 2>/dev/null || true
+          # JSON (produtos da loja) → dist/src/content/produtos
+          if [ -d src/content/produtos ]; then
+            cp -R src/content/produtos/* dist/src/content/produtos/ 2>/dev/null || true
           fi
 
           # .htaccess → raiz do deploy
@@ -120,7 +120,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          server-dir: ./
+          server-dir: public_html/
           exclude: |
             **/.git*
             **/node_modules/**
