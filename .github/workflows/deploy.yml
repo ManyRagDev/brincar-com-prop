@@ -108,7 +108,7 @@ jobs:
       - name: Debug dist contents
         run: |
           echo "Conteúdo de dist/"
-          ls -R dist
+          ls -R dist/src/content/produtos || true
 
       # 🔹 Deploy automático via FTP para Hostinger (incremental)
       - name: Deploy to Hostinger via FTP
@@ -120,7 +120,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          server-dir: /
+          server-dir: ./
           exclude: |
             **/.git*
             **/node_modules/**
