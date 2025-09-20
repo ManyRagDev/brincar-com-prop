@@ -31,6 +31,15 @@ const BlogSection = () => {
     <section id="resenhas" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          {/* Selo de curadoria */}
+        <section className="py-8">
+          <div className="container mx-auto px-4 text-center">
+            <span className="inline-block bg-primary/10 text-primary font-medium text-sm px-4 py-2 rounded-full">
+              ✨ Conteúdos criados com apoio de IA e revisados por nossa curadoria humana
+            </span>
+          </div>
+        </section>
+
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
             Conteúdo prático e baseado em evidências para ajudar você a fazer escolhas mais conscientes
           </h2>

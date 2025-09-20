@@ -61,6 +61,15 @@ export default function BlogPostPage() {
         <PostComponent />
       </MDXProvider>
 
+      {/* Curadoria humana */}
+      <div className="mt-10 border-t pt-6 text-sm text-muted-foreground flex items-center gap-2">
+        <span>🧡</span>
+        <p>
+          Conteúdos elaborados com apoio de Inteligência Artificial, 
+          <strong> revisados e publicados por curadoria humana</strong>.
+        </p>
+      </div>
+
       {!fm.hideShare && <SocialShare />}
     </article>
   );

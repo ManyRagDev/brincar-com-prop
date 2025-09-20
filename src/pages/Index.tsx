@@ -14,6 +14,9 @@ const Index = () => {
         <FeaturesSection />
         <BlogSection />
         <CTASection />
+        
+        
+
       </main>
       <Footer />
     </div>

@@ -1,0 +1,14 @@
+{
+"id": "livro-texturas",
+"nome": "Meu Primeiro Livro de Texturas",
+"slug": "livro-texturas",
+"descricao": "Livro sensorial com diferentes texturas para explorar com o bebê.",
+"categorias": ["sensorial", "livro"],
+"idade": "6-24 meses",
+"imagem": "/images/produtos/livro-texturas.png",
+"linkAfiliado": "https://www.amazon.com.br/dp/XXXXXXXX",
+"destaque": false,
+"preco": "R$ 59,90",
+"rating": 4.6,
+"tags": ["sensorial", "alfabetização", "primeira-infancia"]
+}

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 
 const categorias = [
   "Montessori",
@@ -29,7 +31,6 @@ const ProductForm: React.FC = () => {
   const [price, setPrice] = useState("");
   const [bulkJson, setBulkJson] = useState("");
 
-  // Função para transformar título em kebab-case
   const toKebabCase = (str: string) =>
     str
       .normalize("NFD")
@@ -44,7 +45,6 @@ const ProductForm: React.FC = () => {
     setId(kebab);
   };
 
-  // Detecta origem pelo link
   const detectSource = (url: string): string => {
     if (!url) return "Outro";
     if (url.includes("amazon.com") || url.includes("amzn.to")) return "Amazon";
@@ -52,20 +52,6 @@ const ProductForm: React.FC = () => {
     return "Outro";
   };
 
-  // Baixar JSON
-  const downloadJson = (filename: string, content: object) => {
-    const blob = new Blob([JSON.stringify(content, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${filename}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
-  // Resetar formulário
   const resetForm = () => {
     setTitle("");
     setId("");
@@ -86,21 +72,24 @@ const ProductForm: React.FC = () => {
     const product = {
       id,
       title,
-      image: `./images/${id}.png`, // sempre ./images/{id}.png
+      image: `./images/${id}.png`,
       excerpt,
       affiliateUrl,
       featured,
-      category: [category1, ...(category2 ? [category2] : [])], // array
+      category: [category1, ...(category2 ? [category2] : [])],
       price,
       source: detectSource(affiliateUrl),
     };
 
-    downloadJson(product.id, product);
+    const blob = new Blob([JSON.stringify(product, null, 2)], {
+      type: "application/json",
+    });
+    saveAs(blob, `${id}.json`);
     resetForm();
   };
 
-  // Conversor em massa
-  const handleBulkConvert = () => {
+  // Conversor em massa com ZIP
+  const handleBulkConvert = async () => {
     try {
       const data = JSON.parse(bulkJson);
 
@@ -108,6 +97,8 @@ const ProductForm: React.FC = () => {
         alert("O JSON deve ser um array de produtos!");
         return;
       }
+
+      const zip = new JSZip();
 
       data.forEach((product: any, index: number) => {
         if (!product.id) {
@@ -117,12 +108,16 @@ const ProductForm: React.FC = () => {
           product.image = `./images/${product.id}.png`;
         }
         product.source = detectSource(product.affiliateUrl || "");
-        // Garante que category seja sempre array
         if (typeof product.category === "string") {
           product.category = [product.category];
         }
-        downloadJson(product.id, product);
+
+        const jsonContent = JSON.stringify(product, null, 2);
+        zip.file(`${product.id}.json`, jsonContent);
       });
+
+      const content = await zip.generateAsync({ type: "blob" });
+      saveAs(content, "produtos.zip");
     } catch (error) {
       alert("JSON inválido!");
     }
@@ -204,7 +199,9 @@ const ProductForm: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium">Categoria 2 (opcional)</label>
+            <label className="block text-sm font-medium">
+              Categoria 2 (opcional)
+            </label>
             <select
               value={category2}
               onChange={(e) => setCategory2(e.target.value)}
@@ -263,7 +260,7 @@ const ProductForm: React.FC = () => {
           onClick={handleBulkConvert}
           className="w-full mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
         >
-          Converter para Vários JSONs
+          Baixar ZIP com JSONs
         </button>
       </div>
     </div>

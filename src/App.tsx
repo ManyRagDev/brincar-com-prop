@@ -14,42 +14,71 @@ import ExtratorProduto from "./components/ExtratorProduto";
 import Sobre from "@/pages/Sobre";
 import BeThemeConsole from "./pages/BeThemeConsole";
 import PoliticaPrivacidade from "@/pages/PoliticaPrivacidade";
-import LandingPage from "@/pages/landings/[slug]"; // <- NOVA ROTA (plural)
+import LandingPage from "@/pages/landings/[slug]";
 import ScrollManager from "./components/ScrollManager";
 import ProductForm from "./components/ProductForm";
-import TermosDeUso from "./pages/TermosDeUso"; // se já existir
+import TermosDeUso from "./pages/TermosDeUso";
+
+// LOJA
+import LojaHome from "@/components/Loja/LojaHome";
+import CategoriaPage from "@/components/Loja/CategoriaPage";
+import ProdutoPage from "@/components/Loja/ProdutoPage";
+import SobreLoja from "@/components/Loja/SobreLoja";
+import PoliticaAfiliados from "@/components/Loja/PoliticaAfiliados";
+import ContatoLoja from "@/components/Loja/ContatoLoja";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-      <ScrollManager />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/extrator" element={<ExtratorProduto />} />
-          <Route path="/admin/novo-post" element={<PostForm />} />
-          <Route path="/blog" element={<BlogAll />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/produtos" element={<ProdutosRecomendados />} />
-          <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
-          <Route path="/termos" element={<TermosDeUso />} />
-          <Route path="/console-temas" element={<BeThemeConsole />} />
-          <Route path="/cadastrar" element={<ProductForm />} />
+const App = () => {
+  // Detecta se estamos no subdomínio da loja
+  const isLojaSubdomain = window.location.hostname
+    .toLowerCase()
+    .startsWith("loja.");
 
-          {/* rota dinâmica das LPs */}
-          <Route path="/landings/:slug" element={<LandingPage />} />
+  // Define basename:
+  // - No subdomínio: rotas limpas ("/")
+  // - No domínio principal/localhost: também ("/"), pois seu blog já usa "/"
+  const basename = isLojaSubdomain ? "/" : "/";
 
-          {/* 404 sempre por último */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter basename={basename}>
+          <ScrollManager />
+          <Routes>
+            {/* —— SITE PRINCIPAL —— */}
+            <Route path="/" element={<Index />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/extrator" element={<ExtratorProduto />} />
+            <Route path="/admin/novo-post" element={<PostForm />} />
+            <Route path="/blog" element={<BlogAll />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/produtos" element={<ProdutosRecomendados />} />
+            <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
+            <Route path="/termos" element={<TermosDeUso />} />
+            <Route path="/console-temas" element={<BeThemeConsole />} />
+            <Route path="/cadastrar" element={<ProductForm />} />
+
+            {/* rota dinâmica das LPs */}
+            <Route path="/landings/:slug" element={<LandingPage />} />
+
+            {/* —— LOJA —— */}
+            <Route path="/loja" element={<LojaHome />} />
+            <Route path="/loja/categoria/:slug" element={<CategoriaPage />} />
+            <Route path="/loja/produto/:slug" element={<ProdutoPage />} />
+            <Route path="/loja/sobre" element={<SobreLoja />} />
+            <Route path="/loja/politica" element={<PoliticaAfiliados />} />
+            <Route path="/loja/contato" element={<ContatoLoja />} />
+
+            {/* 404 sempre por último */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

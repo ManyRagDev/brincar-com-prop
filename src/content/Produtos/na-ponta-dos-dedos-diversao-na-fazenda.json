@@ -1,14 +1,16 @@
 {
-  "id": "na-ponta-dos-dedos-diversao-na-fazenda",
-  "title": "Na ponta dos dedos: Diversão na Fazenda",
-  "image": "./images/na-ponta-dos-dedos-diversao-na-fazenda.png",
+  "id": "LIV-002",
+  "slug": "na-ponta-dos-dedos-diversao-na-fazenda",
+  "title": "Na Ponta dos Dedos: Diversão na Fazenda",
   "excerpt": "Tocar e sentir é essencial para a criança. Toque a superfície de silicone em cada página para sentir texturas incríveis!",
-  "affiliateUrl": "https://amzn.to/4psVOsI",
+  "description": "Um livro interativo que convida a criança a explorar diferentes texturas através do tato, estimulando os sentidos e a curiosidade em um cenário lúdico da fazenda.",
   "featured": false,
-  "category": [
+  "categories": [
     "Livros",
     "Sensorial"
   ],
-  "price": "41,24",
+  "price": "R$ 41,24",
+  "link": "https://amzn.to/4psVOsI",
+  "image": "/images/produtos/LIV-002.png",
   "source": "Amazon"
 }

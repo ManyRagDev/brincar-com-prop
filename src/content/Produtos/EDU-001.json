@@ -1,0 +1,16 @@
+{
+  "id": "EDU-001",
+  "slug": "cubo-baby-educativo-encaixar-formas",
+  "title": "Cubo Baby Educativo de Encaixar Formas",
+  "excerpt": "Cubo educativo para encaixar formas e cores.",
+  "description": "Brinquedo clássico que ensina cores, formas e números de maneira divertida. Estimula a coordenação motora, raciocínio lógico e percepção visual.",
+  "featured": true,
+  "categories": [
+    "educativos",
+    "primeira-infancia"
+  ],
+  "price": "R$ 15,90",
+  "link": "https://amzn.to/46sj418",
+  "image": "/images/produtos/EDU-001.png",
+  "source": "Outro"
+}

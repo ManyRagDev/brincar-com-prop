@@ -54,10 +54,12 @@ const CTASection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl" className="group">
-              <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-smooth" />
-              Ver brinquedos recomendados
-            </Button>
+            <a href="/loja">
+              <Button variant="hero" size="xl" className="group">
+                <ShoppingCart className="h-5 w-5 group-hover:scale-110 transition-smooth" />
+                Ver brinquedos recomendados
+              </Button>
+            </a>
             <Link to="/lp/EBOOK-guia-completo-do-sono[Brincar-Educando].pdf">
             <Button variant="outline" size="xl">
               Baixar guia do sono gratuito
@@ -66,7 +68,7 @@ const CTASection = () => {
           </div>
 
           <p className="text-xs text-muted-foreground mt-6">
-            * Alguns links podem ser de afiliados. Sua compra nos ajuda a manter o conteúdo gratuito.
+            * Nossos links são de afiliados. Sua compra nos ajuda a manter e expandir nosso conteúdo.
           </p>
         </Card>
       </div>

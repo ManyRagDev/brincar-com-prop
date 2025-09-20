@@ -58,11 +58,11 @@ const HeroSection = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/produtos">
+            <a href="./auxiliares/EBOOK-guia-completo-do-sono[Brincar-Educando].pdf">
               <Button variant="hero" size="xl">
-                Ver Lista de Brinquedos Recomendados
+                Baixe o Guia Completo do Sono (E-Book)
               </Button>
-            </Link>
+            </a>
 
 
             <Link to="/blog">
