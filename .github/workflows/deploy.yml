@@ -65,10 +65,18 @@ jobs:
             shopt -u nullglob
           fi
 
-          # Imagens → dist/images
+          # Imagens gerais → dist/images
           if [ -d public/images ]; then
             cp -R public/images/* dist/images/ 2>/dev/null || true
           fi
+
+          # Imagens de produtos → dist/images/produtos
+          if [ -d public/images/produtos ]; then
+            mkdir -p dist/images/produtos
+            cp -R public/images/produtos/* dist/images/produtos/ 2>/dev/null || true
+          fi
+
+          # Caso haja pasta 'images' solta
           if [ -d images ]; then
             cp -R images/* dist/images/ 2>/dev/null || true
           fi
