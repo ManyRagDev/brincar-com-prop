@@ -14,5 +14,11 @@ export const CATEGORIAS: Record<string, { titulo: string; descricao?: string }> 
 };
 
 export function nomeCategoria(slug: string) {
-  return CATEGORIAS[slug]?.titulo ?? slug;
+  const cat = CATEGORIAS[slug];
+  if (!cat) {
+    console.warn("⚠️ Categoria não encontrada no mapa:", slug);
+  } else {
+    console.log("✅ Categoria encontrada:", slug, "→", cat.titulo);
+  }
+  return cat?.titulo ?? slug;
 }

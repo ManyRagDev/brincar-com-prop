@@ -1,39 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeroLoja from "@/components/Loja/HeroLoja";
-import { getAllProdutos } from "@/lib/produtos";
+import { getAllProdutos, getProdutosByCategoria, Produto } from "@/lib/produtos";
 import { Link } from "react-router-dom";
 import SecaoCategorias from "@/components/Loja/CategoriaPage";
 import CardProduto from "@/components/Loja/CardProduto";
 import FeaturedCarousel from "@/components/Loja/FeaturedCarousel";
 
 export default function LojaHome() {
-  const todos = getAllProdutos();
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [categoriaAtiva, setCategoriaAtiva] = useState<string | null>(null);
   const perPage = 6;
 
-  // 1) Filtra pelos produtos da categoria selecionada (se houver)
-  const filtrados = categoriaAtiva
-    ? todos.filter(
-        (p) => Array.isArray(p.categories) && p.categories.includes(categoriaAtiva)
-      )
-    : todos;
+  // Busca inicial: todos os produtos
+  useEffect(() => {
+    async function fetchProdutos() {
+      setLoading(true);
+      const todos = await getAllProdutos();
+      setProdutos(todos);
+      setLoading(false);
+    }
+    fetchProdutos();
+  }, []);
 
-  // 2) Pagina os resultados filtrados
-  const totalPages = Math.ceil(filtrados.length / perPage);
-  const produtosVisiveis = filtrados.slice(page * perPage, page * perPage + perPage);
+  // Atualiza quando a categoria muda
+  useEffect(() => {
+    async function fetchCategoria() {
+      if (categoriaAtiva) {
+        setLoading(true);
+        const filtrados = await getProdutosByCategoria(categoriaAtiva);
+        setProdutos(filtrados);
+        setPage(0);
+        setLoading(false);
+      } else {
+        // volta a mostrar todos
+        setLoading(true);
+        const todos = await getAllProdutos();
+        setProdutos(todos);
+        setPage(0);
+        setLoading(false);
+      }
+    }
+    fetchCategoria();
+  }, [categoriaAtiva]);
 
-  // Resetar para página 0 quando trocar a categoria
+  // Paginação
+  const totalPages = Math.ceil(produtos.length / perPage);
+  const produtosVisiveis = produtos.slice(page * perPage, page * perPage + perPage);
+
   function handleSelect(slug: string) {
-    setPage(0);
     setCategoriaAtiva((prev) => (prev === slug ? null : slug));
   }
 
   return (
     <main className="loja-home">
-      {/* Hero */}
       <HeroLoja />
-      <FeaturedCarousel /> 
+      <FeaturedCarousel />
+
       {/* Categorias */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
@@ -58,8 +82,9 @@ export default function LojaHome() {
             </p>
           </header>
 
-          {/* Grid paginado */}
-          {produtosVisiveis.length > 0 ? (
+          {loading ? (
+            <p className="text-center text-gray-500">Carregando produtos...</p>
+          ) : produtosVisiveis.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {produtosVisiveis.map((produto) => (
@@ -67,7 +92,7 @@ export default function LojaHome() {
                 ))}
               </div>
 
-              {/* Controles de paginação */}
+              {/* Paginação */}
               {totalPages > 1 && (
                 <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
                   <button
@@ -92,11 +117,11 @@ export default function LojaHome() {
                 </div>
               )}
 
-              {/* Atalho para limpar filtro, se ativo */}
+              {/* Limpar filtro */}
               {categoriaAtiva && (
                 <div className="text-center mt-4">
                   <button
-                    onClick={() => handleSelect(categoriaAtiva)}
+                    onClick={() => setCategoriaAtiva(null)}
                     className="text-sm underline text-blue-700 hover:text-blue-900"
                   >
                     Limpar filtro
@@ -112,7 +137,7 @@ export default function LojaHome() {
         </div>
       </section>
 
-      {/* Chamada para o blog */}
+      {/* Blog */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
           <header className="mb-4">

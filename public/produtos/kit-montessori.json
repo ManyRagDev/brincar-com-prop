@@ -1,0 +1,14 @@
+{
+"id": "kit-montessori",
+"nome": "Kit Montessori de Blocos de Madeira",
+"slug": "kit-montessori",
+"descricao": "Blocos de madeira naturais que estimulam criatividade, coordenação e pensamento lógico.",
+"categorias": ["montessori", "construcao"],
+"idade": "3+ anos",
+"imagem": "/images/produtos/kit-montessori.png",
+"linkAfiliado": "https://mercadolivre.com/sec/xxxxx",
+"destaque": true,
+"preco": "R$ 129,90",
+"rating": 4.7,
+"tags": ["madeira", "criatividade", "coordenação"]
+}

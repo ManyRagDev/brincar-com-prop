@@ -1,0 +1,16 @@
+{
+  "id": "LIV-001",
+  "slug": "livro-ver-tocar-e-sentir-dinossauros",
+  "title": "Livro Ver, Tocar e Sentir: Dinossauros!",
+  "excerpt": "Livro com texturas. Livro encantador, toque nos animais e sinta incríveis texturas.",
+  "description": "Um livro interativo para crianças explorarem o mundo dos dinossauros através do tato. Com texturas incríveis e páginas coloridas, incentiva a curiosidade, a imaginação e o desenvolvimento sensorial.",
+  "featured": true,
+  "categories": [
+    "Livros",
+    "Sensorial"
+  ],
+  "price": "R$ 33,44",
+  "link": "https://amzn.to/4n6LogG",
+  "image": "/images/produtos/livro-ver-tocar-e-sentir-dinossauros.png",
+  "source": "Amazon"
+}

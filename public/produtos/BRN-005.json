@@ -1,0 +1,15 @@
+{
+  "id": "BRN-005",
+  "slug": "jogo-cartas-uno",
+  "title": "Jogo de Cartas UNO",
+  "excerpt": "Jogo de cartas UNO clássico.",
+  "description": "Jogo de cartas dinâmico e divertido para toda a família, que desenvolve o raciocínio rápido e promove a interação social. Versão clássica do popular jogo UNO.",
+  "featured": false,
+  "categories": [
+    "brinquedos"
+  ],
+  "price": "R$ 15,90",
+  "link": "https://amzn.to/3VWYD7B",
+  "image": "/images/produtos/BRN-005.png",
+  "source": "Outro"
+}
