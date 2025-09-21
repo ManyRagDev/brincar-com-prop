@@ -13,12 +13,7 @@ export type Produto = {
 };
 
 // Carrega todos os JSON de /content/produtos
-//const modules = import.meta.glob("/src/content/produtos/*.json", { eager: true });
-
-export async function fetchAllProdutos(): Promise<Produto[]> {
-  const res = await fetch("/src/content/produtos/index.json");
-  return res.json();
-}
+const modules = import.meta.glob("/src/content/produtos/*.json", { eager: true });
 
 const cache: Produto[] = Object.values(modules).map(
   (m: any) => m.default ?? m
