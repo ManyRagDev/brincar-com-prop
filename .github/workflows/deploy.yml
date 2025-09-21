@@ -47,7 +47,7 @@ jobs:
 
       # Cria arquivo version.txt
       - name: Write version file
-        run: echo "commit: $GITHUB_SHA" > dist/version.txt
+        run: echo "commit $GITHUB_SHA" > dist/version.txt
 
       # Debug: listar dist
       - name: Debug dist contents
