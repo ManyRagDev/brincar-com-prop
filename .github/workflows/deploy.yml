@@ -40,6 +40,18 @@ jobs:
             echo "BUILD_CMD=npm run build" >> $GITHUB_ENV
           fi
 
+      # ✅ Corrige diferença de maiúsculas/minúsculas no Linux do Actions
+      - name: Compat: espelhar 'src/content/Produtos' -> 'src/content/produtos' (case fix)
+        run: |
+          if [ -d src/content/Produtos ]; then
+            rm -rf src/content/produtos
+            mkdir -p src/content/produtos
+            cp -R src/content/Produtos/* src/content/produtos/
+            echo "Espelhado: src/content/Produtos -> src/content/produtos"
+          else
+            echo "Aviso: 'src/content/Produtos' não existe; nada a espelhar."
+          fi
+
       - name: Build
         run: |
           echo "Running: $BUILD_CMD"
@@ -79,6 +91,7 @@ jobs:
           fi
 
           # JSON (produtos da loja) → dist/src/content/produtos
+          # (mantemos por garantia; o import.meta.glob já terá embutido no bundle)
           if [ -d src/content/produtos ]; then
             cp -R src/content/produtos/* dist/src/content/produtos/ 2>/dev/null || true
           fi
@@ -104,11 +117,11 @@ jobs:
           echo "commit: $GITHUB_SHA" > dist/version.txt
           echo "date: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> dist/version.txt
 
-      # 🔹 Debug: listar arquivos do dist
+      # 🔹 Debug: listar arquivos relevantes do dist
       - name: Debug dist contents
         run: |
-          echo "Conteúdo de dist/"
-          ls -R dist/src/content/produtos || true
+          echo ">>> JSONs que foram para o bundle (cópia de segurança no dist/):"
+          ls -al dist/src/content/produtos || true
 
       # 🔹 Deploy automático via FTP para Hostinger (incremental)
       - name: Deploy to Hostinger via FTP
