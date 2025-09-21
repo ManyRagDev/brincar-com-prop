@@ -45,9 +45,64 @@ jobs:
           echo "Running: $BUILD_CMD"
           eval "$BUILD_CMD"
 
+      # Reorganiza saída para layout da Hostinger
+      - name: Reshape dist to Hostinger layout
+        run: |
+          set -e
+          mkdir -p dist/assets dist/images dist/src/content/posts dist/src/content/produtos
+
+          # Move css/js/map para dist/assets
+          find dist -maxdepth 2 -type f \( -name "*.css" -o -name "*.js" -o -name "*.map" \) -not -path "dist/assets/*" -exec mv -f {} dist/assets/ \; || true
+
+          # Copia arquivos de public (exceto index.html)
+          if [ -d public ]; then
+            shopt -s nullglob
+            for f in public/*; do
+              if [ -f "$f" ] && [ "$(basename "$f")" != "index.html" ]; then
+                cp -f "$f" dist/
+              fi
+            done
+            shopt -u nullglob
+          fi
+
+          # Imagens → dist/images
+          if [ -d public/images ]; then
+            cp -R public/images/* dist/images/ 2>/dev/null || true
+          fi
+          if [ -d images ]; then
+            cp -R images/* dist/images/ 2>/dev/null || true
+          fi
+
+          # MDX posts
+          if [ -d src/content/posts ]; then
+            cp -R src/content/posts/* dist/src/content/posts/ 2>/dev/null || true
+          fi
+
+          # Produtos JSON
+          if [ -d src/content/produtos ]; then
+            cp -R src/content/produtos/* dist/src/content/produtos/ 2>/dev/null || true
+          fi
+
+          # .htaccess
+          if [ -f .htaccess ]; then
+            cp -f .htaccess dist/.htaccess
+          elif [ -f config/.htaccess ]; then
+            cp -f config/.htaccess dist/.htaccess
+          else
+            echo "WARNING: .htaccess não encontrado"
+          fi
+
+          # Landing pages auxiliares → lp
+          if [ -d auxiliares ]; then
+            rm -rf dist/lp
+            cp -R auxiliares dist/lp
+          fi
+
       # Cria arquivo version.txt
       - name: Write version file
-        run: echo "commit $GITHUB_SHA" > dist/version.txt
+        run: |
+          echo "commit: $GITHUB_SHA" > dist/version.txt
+          echo "date: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> dist/version.txt
 
       # Debug: listar dist
       - name: Debug dist contents
