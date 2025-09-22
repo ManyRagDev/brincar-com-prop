@@ -80,7 +80,7 @@ jobs:
 
           # Produtos JSON (pasta correta agora é public/produtos)
           if [ -d public/produtos ]; then
-            cp -R public/produtos dist/produtos
+            cp -R public/produtos/* dist/produtos/
           fi
 
           # .htaccess
