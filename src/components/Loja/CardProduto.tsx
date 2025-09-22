@@ -18,7 +18,7 @@ export default function CardProduto({ produto }: { produto: Produto }) {
             className="hover:text-blue-600"
           >
             {produto.title}
-            {produto.id}
+            {/*{produto.id}*/}
           </Link>
         </h3>
         {produto.price && (
