@@ -78,8 +78,9 @@ jobs:
             cp -R src/content/posts/* dist/src/content/posts/ 2>/dev/null || true
           fi
 
-          # Produtos JSON (pasta correta agora é public/produtos)
+          # Produtos JSON (corrigido)
           if [ -d public/produtos ]; then
+            mkdir -p dist/produtos
             cp -R public/produtos/* dist/produtos/
           fi
 
