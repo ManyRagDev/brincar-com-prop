@@ -27,17 +27,16 @@ import SobreLoja from "@/components/Loja/SobreLoja";
 import PoliticaAfiliados from "@/components/Loja/PoliticaAfiliados";
 import ContatoLoja from "@/components/Loja/ContatoLoja";
 
+// 📊 Componente de rastreamento
+import { PageTracking } from "@/hooks/usePageTracking";
+
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Detecta se estamos no subdomínio da loja
   const isLojaSubdomain = window.location.hostname
     .toLowerCase()
     .startsWith("loja.");
 
-  // Define basename:
-  // - No subdomínio: rotas limpas ("/")
-  // - No domínio principal/localhost: também ("/"), pois seu blog já usa "/"
   const basename = isLojaSubdomain ? "/" : "/";
 
   return (
@@ -47,6 +46,10 @@ const App = () => {
         <Sonner />
         <BrowserRouter basename={basename}>
           <ScrollManager />
+
+          {/* 📊 GA4 Page Tracking dentro do Router */}
+          <PageTracking />
+
           <Routes>
             {/* —— SITE PRINCIPAL —— */}
             <Route path="/" element={<Index />} />
