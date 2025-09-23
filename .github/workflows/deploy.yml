@@ -125,3 +125,4 @@ jobs:
           exclude: |
             **/.git*
             **/node_modules/**
+            **/produtos/produtos/**
