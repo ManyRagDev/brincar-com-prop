@@ -17,7 +17,7 @@ const App = () => {
   });
   const [produtos, setProdutos] = useState([]);
 
-  const handleUrlChange = (e) => {
+  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
   };
 
@@ -27,17 +27,17 @@ const App = () => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(response.data, 'text/html');
 
-      const nome = doc.querySelector('h1')?.innerText || '';
+      const nome = (doc.querySelector('h1') as HTMLElement)?.innerText || '';
 
       let imagem = doc.querySelector('img[itemprop="image"]')?.getAttribute('src');
       if (!imagem) imagem = doc.querySelector('.ui-pdp-gallery__figure img')?.getAttribute('src');
-      if (!imagem) imagem = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || '';
+      if (!imagem) imagem = (doc.querySelector('meta[property="og:image"]') as HTMLMetaElement)?.content || '';
 
-      const descricaoElement = doc.querySelector('p[data-testid="content"]');
+      const descricaoElement = doc.querySelector('p[data-testid="content"]') as HTMLElement;
       const descricao = descricaoElement ? descricaoElement.innerText.replace(/\n/g, '\n') :
-                        doc.querySelector('meta[name="description"]')?.content || '';
+                        (doc.querySelector('meta[name="description"]') as HTMLMetaElement)?.content || '';
 
-      const categoria = doc.querySelector('nav.breadcrumb a:last-child')?.innerText || '';
+      const categoria = (doc.querySelector('nav.breadcrumb a:last-child') as HTMLElement)?.innerText || '';
 
       setProduto({
         ...produto,
@@ -54,7 +54,7 @@ const App = () => {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProduto((prev) => ({ ...prev, [name]: value }));
   };
@@ -80,7 +80,7 @@ const App = () => {
     alert('JSON copiado para a área de transferência.');
   };
 
-  const labels = {
+  const labels: Record<string, string> = {
     id: 'ID',
     nome: 'Nome do Produto',
     slug: 'Slug',
@@ -111,7 +111,7 @@ const App = () => {
             <input
               type="text"
               name={key}
-              value={produto[key]}
+              value={produto[key as keyof typeof produto]}
               onChange={handleInputChange}
               placeholder={labels[key]}
               style={{ padding: 8 }}

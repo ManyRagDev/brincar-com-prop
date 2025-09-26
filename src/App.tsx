@@ -69,7 +69,7 @@ const App = () => {
 
             {/* —— LOJA —— */}
             <Route path="/loja" element={<LojaHome />} />
-            <Route path="/loja/categoria/:slug" element={<CategoriaPage />} />
+            <Route path="/loja/categoria/:slug" element={<CategoriaPage categoriaAtiva="" onSelect={() => {}} />} />
             <Route path="/loja/produto/:slug" element={<ProdutoPage />} />
             <Route path="/loja/sobre" element={<SobreLoja />} />
             <Route path="/loja/politica" element={<PoliticaAfiliados />} />

@@ -26,11 +26,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 const LS_USED_KEY = "be_used_themes_v1";
 const LS_QUEUE_KEY = "be_queue_themes_v1";
 
-
-
-
-function useLocalJsonArray(key, initial = [], fallbackImport) {
-  const [value, setValue] = useState(initial);
+function useLocalJsonArray(key: string, initial: string[] = [], fallbackImport?: string[]) {
+  const [value, setValue] = useState<string[]>(initial);
 
   // carregar
   useEffect(() => {
@@ -66,22 +63,26 @@ function useLocalJsonArray(key, initial = [], fallbackImport) {
     }
   }, [key, value]);
 
-  return [value, setValue];
+  return [value, setValue] as const;
 }
 
-
-function classNames(...c) {
+function classNames(...c: (string | boolean | undefined)[]) {
   return c.filter(Boolean).join(" ");
 }
 
+type Message = {
+  msg: string;
+  variant: 'info' | 'ok' | 'warn' | 'error';
+};
+
 export default function BeThemeConsole() {
-  console.log(">>> VITE_N8N_WEBHOOK_URL:", import.meta.env.VITE_N8N_WEBHOOK_URL); //<<<<<<<<<<<<<---------- inserido aqui
+  console.log(">>> VITE_N8N_WEBHOOK_URL:", import.meta.env.VITE_N8N_WEBHOOK_URL);
   const [input, setInput] = useState("");
   const [queue, setQueue] = useLocalJsonArray(LS_QUEUE_KEY, []);
   const [used, setUsed] = useLocalJsonArray(LS_USED_KEY, []);
   const [isSending, setIsSending] = useState(false);
-  const [message, setMessage] = useState(null);
-  const inputRef = useRef(null);
+  const [message, setMessage] = useState<Message | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || "";
   console.log("Webhook URL:", import.meta.env.VITE_N8N_WEBHOOK_URL);
@@ -90,7 +91,7 @@ export default function BeThemeConsole() {
     [used]
   );
 
-  function toast(msg, variant = "info") {
+  function toast(msg: string, variant: Message['variant'] = "info") {
     setMessage({ msg, variant });
     setTimeout(() => setMessage(null), 3500);
   }
@@ -113,15 +114,15 @@ export default function BeThemeConsole() {
     toast("Tema adicionado à lista 'A usar'.", "ok");
   }
 
-  function deleteFromQueue(idx) {
+  function deleteFromQueue(idx: number) {
     setQueue((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  function deleteFromUsed(idx) {
+  function deleteFromUsed(idx: number) {
     setUsed((prev) => prev.filter((_, i) => i !== idx));
   }
 
-  function moveQueueToUsed(idx) {
+  function moveQueueToUsed(idx: number) {
     const theme = queue[idx];
     if (!theme) return;
     if (normalizedUsed.has(theme.trim().toLowerCase())) {
@@ -134,11 +135,11 @@ export default function BeThemeConsole() {
     toast("Tema movido para 'Usados'.", "ok");
   }
 
-  function copyText(text) {
+  function copyText(text: string) {
     navigator.clipboard.writeText(text).then(() => toast("Copiado!", "ok"));
   }
 
-  function exportJson(filename, data) {
+  function exportJson(filename: string, data: string[]) {
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json;charset=utf-8",
     });
@@ -150,7 +151,7 @@ export default function BeThemeConsole() {
     URL.revokeObjectURL(url);
   }
 
-  async function triggerN8n(theme) {
+  async function triggerN8n(theme: string) {
     console.log(">>> Disparando triggerN8n com tema:", theme);
     if (!webhookUrl) {
       return toast(
@@ -180,11 +181,9 @@ export default function BeThemeConsole() {
       };
 
       const res = await fetch(webhookUrl, {
-              
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        
       });
       console.log(">>> Enviando para n8n:", webhookUrl, payload);
       if (!res.ok) {
@@ -195,13 +194,13 @@ export default function BeThemeConsole() {
       toast("Enviado ao n8n com sucesso.", "ok");
     } catch (err) {
       console.error(err);
-      toast(`Erro ao enviar ao n8n: ${err.message}`, "error");
+      toast(`Erro ao enviar ao n8n: ${(err as Error).message}`, "error");
     } finally {
       setIsSending(false);
     }
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     addToQueue();
   }
@@ -284,7 +283,8 @@ export default function BeThemeConsole() {
             </div>
 
             {queue.length === 0 ? (
-              <p className="text-sm text-gray-500">Nenhum tema na fila. Adicione acima.</p>) : (
+              <p className="text-sm text-gray-500">Nenhum tema na fila. Adicione acima.</p>
+            ) : (
               <ul className="space-y-2">
                 {queue.map((t, i) => (
                   <li
@@ -338,7 +338,8 @@ export default function BeThemeConsole() {
             </div>
 
             {used.length === 0 ? (
-              <p className="text-sm text-gray-500">Ainda não há temas usados.</p>) : (
+              <p className="text-sm text-gray-500">Ainda não há temas usados.</p>
+            ) : (
               <ul className="space-y-2">
                 {used.map((t, i) => (
                   <li

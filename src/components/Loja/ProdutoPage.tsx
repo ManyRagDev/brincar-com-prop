@@ -1,9 +1,19 @@
 import { useParams, Link } from "react-router-dom";
 import { getProdutoBySlug, getProdutosByCategoria, buildAffiliateLink } from "@/lib/produtos";
+import { useEffect, useState } from "react";
 
 export default function ProdutoPage() {
   const { slug } = useParams();
   const produto = getProdutoBySlug(slug!);
+  const [relacionados, setRelacionados] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (produto?.categories?.length) {
+      getProdutosByCategoria(produto.categories[0]).then((produtos) => {
+        setRelacionados(produtos.filter(p => p.slug !== produto.slug).slice(0, 4));
+      });
+    }
+  }, [produto]);
 
   if (!produto) {
     return (
@@ -13,11 +23,6 @@ export default function ProdutoPage() {
       </main>
     );
   }
-
-  // Relacionados: primeiros 4 da primeira categoria
-  const relacionados = produto.categories?.length
-    ? getProdutosByCategoria(produto.categories[0]).filter(p => p.slug !== produto.slug).slice(0, 4)
-    : [];
 
   return (
     <main className="produto-page container">

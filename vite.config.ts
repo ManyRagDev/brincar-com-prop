@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     mdx({
       remarkPlugins: [
         remarkFrontmatter,
-        [remarkMdxFrontmatter, { name: "frontmatter" }]
+        [remarkMdxFrontmatter, { name: "frontmatter" }] as any
       ]
     }),
     react(),
