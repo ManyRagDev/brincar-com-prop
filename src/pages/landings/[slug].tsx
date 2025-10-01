@@ -5,6 +5,7 @@ import { getAllLandings } from "@/lib/landings"; // <- libs (com S)
 import { Image } from "@/components/ui/image";
 import { Info, Tip, Checklist, Callout, Warning } from "@/components/ui/blocks";
 import StickyCTA from "@/components/ui/StickyCTA";
+import SEO from "@/components/SEO";
 
 const components = { img: Image, Info, Tip, Checklist, Callout, Warning, StickyCTA };
 
@@ -30,12 +31,21 @@ export default function LandingPage() {
   const MDX = page.default;
 
   return (
-    <article className="prose prose-lg dark:prose-invert mx-auto max-w-2xl px-6 pt-8 pb-24">
-      {fm.noindex && <meta name="robots" content="noindex,nofollow" />}
+    <>
+      <SEO
+        title={fm.title}
+        description={fm.excerpt || fm.description || ''}
+        image={fm.thumbnail || fm.image}
+        type="website"
+        url={`/landings/${slug}`}
+        noindex={fm.noindex}
+      />
+      <article className="prose prose-lg dark:prose-invert mx-auto max-w-2xl px-6 pt-8 pb-24">
       {fm.showTitle && <h1>{fm.title}</h1>}
       <MDXProvider components={components}>
         <MDX />
       </MDXProvider>
-    </article>
+      </article>
+    </>
   );
 }

@@ -7,6 +7,16 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 export default defineConfig(({ mode }) => ({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'mdx-vendor': ['@mdx-js/react'],
+        }
+      }
+    }
+  },
   server: {
     host: "::",
     port: 8080,

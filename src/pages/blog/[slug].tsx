@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import SocialShare from "@/components/SocialShare";
 import { Info, Tip, Checklist, Callout, Warning } from "@/components/ui/blocks";
+import SEO from "@/components/SEO";
 
 const components = { img: Image, Info, Tip, Checklist, Callout, Warning };
 
@@ -26,10 +27,22 @@ export default function BlogPostPage() {
 
   const wrapperClass = fm.landing ? "landing-page" : "";
 
+  // Convert date to ISO format if needed
+  const publishedTime = fm.date ? new Date(fm.date).toISOString() : undefined;
+
   return (
-    <article className={`prose prose-lg dark:prose-invert mx-auto px-6 pt-8 pb-20 max-w-2xl ${wrapperClass}`}>
-      {/* noindex: só se você quiser permitir isso em posts normais */}
-      {fm.noindex && <meta name="robots" content="noindex,nofollow" />}
+    <>
+      <SEO
+        title={fm.title}
+        description={fm.excerpt || fm.description || ''}
+        image={fm.thumbnail || fm.image}
+        publishedTime={publishedTime}
+        section={fm.category}
+        tags={fm.tags || []}
+        url={`/blog/${slug}`}
+        noindex={fm.noindex}
+      />
+      <article className={`prose prose-lg dark:prose-invert mx-auto px-6 pt-8 pb-20 max-w-2xl ${wrapperClass}`}>
 
       {/* Voltar */}
       {!fm.hideBack && (
@@ -71,6 +84,7 @@ export default function BlogPostPage() {
       </div>
 
       {!fm.hideShare && <SocialShare />}
-    </article>
+      </article>
+    </>
   );
 }
