@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 md:pt-16">
       {/* Background com overlay suave */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
