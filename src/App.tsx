@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import BlogPostPage from "./pages/blog/[slug]";
 import BlogAll from "./pages/BlogAll";
 import PostForm from "./pages/admin/PostForm";
+import AdminProdutos from "./pages/admin/AdminProdutos";
 import ProdutosRecomendados from "./pages/ProdutosRecomendados";
 import ExtratorProduto from "./components/ExtratorProduto";
 import Sobre from "@/pages/Sobre";
@@ -56,6 +57,7 @@ const App = () => {
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/extrator" element={<ExtratorProduto />} />
             <Route path="/admin/novo-post" element={<PostForm />} />
+            <Route path="/admin/produtos" element={<AdminProdutos />} />
             <Route path="/blog" element={<BlogAll />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/produtos" element={<ProdutosRecomendados />} />
