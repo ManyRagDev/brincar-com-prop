@@ -14,16 +14,404 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      criancas: {
+        Row: {
+          apelido: string | null
+          created_at: string | null
+          data_nascimento: string
+          id: string
+          nome: string
+          updated_at: string | null
+          usuario_id: string
+        }
+        Insert: {
+          apelido?: string | null
+          created_at?: string | null
+          data_nascimento: string
+          id?: string
+          nome: string
+          updated_at?: string | null
+          usuario_id: string
+        }
+        Update: {
+          apelido?: string | null
+          created_at?: string | null
+          data_nascimento?: string
+          id?: string
+          nome?: string
+          updated_at?: string | null
+          usuario_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "criancas_usuario_id_fkey"
+            columns: ["usuario_id"]
+            isOneToOne: false
+            referencedRelation: "usuarios"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      event_confirmations: {
+        Row: {
+          alternative_date: string | null
+          alternative_location: string | null
+          alternative_time: string | null
+          created_at: string
+          date_confirmed: boolean | null
+          event_id: number
+          id: string
+          location_confirmed: boolean | null
+          presence_confirmed: boolean | null
+          time_confirmed: boolean | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          alternative_date?: string | null
+          alternative_location?: string | null
+          alternative_time?: string | null
+          created_at?: string
+          date_confirmed?: boolean | null
+          event_id: number
+          id?: string
+          location_confirmed?: boolean | null
+          presence_confirmed?: boolean | null
+          time_confirmed?: boolean | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          alternative_date?: string | null
+          alternative_location?: string | null
+          alternative_time?: string | null
+          created_at?: string
+          date_confirmed?: boolean | null
+          event_id?: number
+          id?: string
+          location_confirmed?: boolean | null
+          presence_confirmed?: boolean | null
+          time_confirmed?: boolean | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_confirmations_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "table_reune"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      event_organizers: {
+        Row: {
+          added_at: string | null
+          added_by: string
+          event_id: number | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          added_at?: string | null
+          added_by: string
+          event_id?: number | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          added_at?: string | null
+          added_by?: string
+          event_id?: number | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_organizers_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "table_reune"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      historias: {
+        Row: {
+          capa_url: string | null
+          created_at: string | null
+          created_by: string | null
+          descricao: string | null
+          duracao_minutos: number | null
+          faixa_etaria_max: number
+          faixa_etaria_min: number
+          id: string
+          publicado: boolean | null
+          titulo: string
+          updated_at: string | null
+        }
+        Insert: {
+          capa_url?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          descricao?: string | null
+          duracao_minutos?: number | null
+          faixa_etaria_max?: number
+          faixa_etaria_min?: number
+          id?: string
+          publicado?: boolean | null
+          titulo: string
+          updated_at?: string | null
+        }
+        Update: {
+          capa_url?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          descricao?: string | null
+          duracao_minutos?: number | null
+          faixa_etaria_max?: number
+          faixa_etaria_min?: number
+          id?: string
+          publicado?: boolean | null
+          titulo?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      historias_audios: {
+        Row: {
+          audio_url: string
+          created_at: string | null
+          duracao_segundos: number | null
+          historia_id: string
+          id: string
+          narrador: string | null
+        }
+        Insert: {
+          audio_url: string
+          created_at?: string | null
+          duracao_segundos?: number | null
+          historia_id: string
+          id?: string
+          narrador?: string | null
+        }
+        Update: {
+          audio_url?: string
+          created_at?: string | null
+          duracao_segundos?: number | null
+          historia_id?: string
+          id?: string
+          narrador?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "historias_audios_historia_id_fkey"
+            columns: ["historia_id"]
+            isOneToOne: false
+            referencedRelation: "historias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      historias_textos: {
+        Row: {
+          conteudo: string
+          created_at: string | null
+          historia_id: string
+          id: string
+          ordem: number
+        }
+        Insert: {
+          conteudo: string
+          created_at?: string | null
+          historia_id: string
+          id?: string
+          ordem: number
+        }
+        Update: {
+          conteudo?: string
+          created_at?: string | null
+          historia_id?: string
+          id?: string
+          ordem?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "historias_textos_historia_id_fkey"
+            columns: ["historia_id"]
+            isOneToOne: false
+            referencedRelation: "historias"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      historico: {
+        Row: {
+          concluido: boolean | null
+          created_at: string | null
+          crianca_id: string | null
+          historia_id: string | null
+          id: string
+          progresso_segundos: number | null
+          tipo: string
+          updated_at: string | null
+          usuario_id: string
+        }
+        Insert: {
+          concluido?: boolean | null
+          created_at?: string | null
+          crianca_id?: string | null
+          historia_id?: string | null
+          id?: string
+          progresso_segundos?: number | null
+          tipo: string
+          updated_at?: string | null
+          usuario_id: string
+        }
+        Update: {
+          concluido?: boolean | null
+          created_at?: string | null
+          crianca_id?: string | null
+          historia_id?: string | null
+          id?: string
+          progresso_segundos?: number | null
+          tipo?: string
+          updated_at?: string | null
+          usuario_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "historico_crianca_id_fkey"
+            columns: ["crianca_id"]
+            isOneToOne: false
+            referencedRelation: "criancas"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "historico_historia_id_fkey"
+            columns: ["historia_id"]
+            isOneToOne: false
+            referencedRelation: "historias"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "historico_usuario_id_fkey"
+            columns: ["usuario_id"]
+            isOneToOne: false
+            referencedRelation: "usuarios"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      table_reune: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_date: string
+          event_time: string
+          id: number
+          is_public: boolean | null
+          location: string | null
+          max_attendees: number | null
+          status: string | null
+          title: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          event_time?: string
+          id?: number
+          is_public?: boolean | null
+          location?: string | null
+          max_attendees?: number | null
+          status?: string | null
+          title?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          event_time?: string
+          id?: number
+          is_public?: boolean | null
+          location?: string | null
+          max_attendees?: number | null
+          status?: string | null
+          title?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      usuarios: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          nome: string
+          telefone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id: string
+          nome: string
+          telefone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          nome?: string
+          telefone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +538,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const

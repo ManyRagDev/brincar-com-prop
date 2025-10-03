@@ -19,6 +19,7 @@ import LandingPage from "@/pages/landings/[slug]";
 import ScrollManager from "./components/ScrollManager";
 import ProductForm from "./components/ProductForm";
 import TermosDeUso from "./pages/TermosDeUso";
+import Auth from "./pages/Auth";
 
 // LOJA
 import LojaHome from "@/components/Loja/LojaHome";
@@ -52,6 +53,9 @@ const App = () => {
           <PageTracking />
 
           <Routes>
+            {/* —— AUTENTICAÇÃO —— */}
+            <Route path="/auth" element={<Auth />} />
+
             {/* —— SITE PRINCIPAL —— */}
             <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
