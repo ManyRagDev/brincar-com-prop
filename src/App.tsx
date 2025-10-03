@@ -10,6 +10,10 @@ import BlogPostPage from "./pages/blog/[slug]";
 import BlogAll from "./pages/BlogAll";
 import PostForm from "./pages/admin/PostForm";
 import AdminProdutos from "./pages/admin/AdminProdutos";
+import AdminHistorias from "./pages/admin/AdminHistorias";
+import HistoriaForm from "./pages/admin/HistoriaForm";
+import HistoriaPreview from "./pages/admin/HistoriaPreview";
+import HistoriaAudio from "./pages/admin/HistoriaAudio";
 import ProdutosRecomendados from "./pages/ProdutosRecomendados";
 import ExtratorProduto from "./components/ExtratorProduto";
 import Sobre from "@/pages/Sobre";
@@ -62,6 +66,11 @@ const App = () => {
             <Route path="/extrator" element={<ExtratorProduto />} />
             <Route path="/admin/novo-post" element={<PostForm />} />
             <Route path="/admin/produtos" element={<AdminProdutos />} />
+            <Route path="/admin/historias" element={<AdminHistorias />} />
+            <Route path="/admin/historias/nova" element={<HistoriaForm />} />
+            <Route path="/admin/historias/editar/:id" element={<HistoriaForm />} />
+            <Route path="/admin/historias/preview/:id" element={<HistoriaPreview />} />
+            <Route path="/admin/historias/audio/:id" element={<HistoriaAudio />} />
             <Route path="/blog" element={<BlogAll />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/produtos" element={<ProdutosRecomendados />} />
